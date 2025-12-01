@@ -1,2 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Ensure these stay as text
+*.html text
+*.css  text
+*.js   text
+*.md   text
+*.json text
+
+# Treat images as binary (no eol normalization attempts)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg  text
