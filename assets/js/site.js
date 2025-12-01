@@ -1,120 +1,69 @@
-/* assets/js/site.js */
+/* assets/js/site.js
+   The Reverie — single behavior file:
+   - mobile nav toggle
+   - active nav link
+   - footer year
+*/
 (() => {
+  const ready = (fn) => {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
+    else fn();
+  };
+
+  const normalize = (path) => (path || "").replace(/\/+$/, "").toLowerCase();
+
+  // Works for GitHub Pages project sites: /<repo-name>/...
   const getBase = () => {
-    // Works for GitHub pages project sites: /<repo-name>/...
     const parts = window.location.pathname.split("/").filter(Boolean);
-    // If path is just "/", base is ""
-    if (parts.length === 0) return "";
-    // Assume first segment is repo name (the-reverie)
-    return `/${parts[0]}`;
+    return parts.length ? `/${parts[0]}` : "";
   };
 
-  const base = getBase();
-  const abs = (p) => `${base}${p}`.replace(/\/+/g, "/");
+  ready(() => {
+    const base = getBase();
 
-  const ensureSiteCSS = () => {
-    const want = abs("/assets/css/site.css");
-    const links = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
-    const already = links.some(l => (l.getAttribute("href") || "").includes("assets/css/site.css"));
-    if (already) return;
-
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = want;
-    document.head.appendChild(link);
-  };
-
-  const fetchText = async (url) => {
-    const res = await fetch(url, { cache: "no-cache" });
-    if (!res.ok) throw new Error(`Failed to load ${url}: ${res.status}`);
-    return await res.text();
-  };
-
-  const insertHeaderFooter = async () => {
-    // If page already has a header/footer (old standalone pages), do NOT inject again.
-    const hasHeader = !!document.querySelector("header.site-header");
-    const hasFooter = !!document.querySelector("footer.site-footer");
-
-    const headerSlot =
-      document.querySelector('[data-include="header"]') ||
-      (() => {
-        const d = document.createElement("div");
-        d.setAttribute("data-include", "header");
-        document.body.prepend(d);
-        return d;
-      })();
-
-    const footerSlot =
-      document.querySelector('[data-include="footer"]') ||
-      (() => {
-        const d = document.createElement("div");
-        d.setAttribute("data-include", "footer");
-        document.body.appendChild(d);
-        return d;
-      })();
-
-    if (!hasHeader) {
-      headerSlot.innerHTML = await fetchText(abs("/partials/header.html"));
-      // Rewrite any root-relative links to include base (so they work on GitHub Pages project site)
-      headerSlot.querySelectorAll("a[href]").forEach(a => {
-        const href = a.getAttribute("href") || "";
-        if (href.startsWith("/")) a.setAttribute("href", abs(href)); // "/pages/..." -> "/the-reverie/pages/..."
-      });
-    }
-
-    if (!hasFooter) {
-      footerSlot.innerHTML = await fetchText(abs("/partials/footer.html"));
-    }
-
-    // Nav toggle
+    // Mobile nav toggle
     const btn = document.querySelector(".nav-toggle");
     const nav = document.querySelector(".main-nav");
     if (btn && nav) {
       btn.addEventListener("click", () => {
         const open = nav.classList.toggle("nav-open");
-        btn.classList.toggle("nav-open", open);
         btn.setAttribute("aria-expanded", String(open));
       });
 
-      // close after click
-      nav.querySelectorAll("a").forEach(a => {
+      // close menu after clicking a link on mobile
+      nav.querySelectorAll("a").forEach((a) => {
         a.addEventListener("click", () => {
           nav.classList.remove("nav-open");
-          btn.classList.remove("nav-open");
           btn.setAttribute("aria-expanded", "false");
         });
       });
     }
 
-    // Active link (best effort)
-    const cur = window.location.pathname.replace(/\/+$/, "");
-    document.querySelectorAll(".main-nav a[href]").forEach(a => {
+    // Active nav link
+    const cur = normalize(window.location.pathname);
+    document.querySelectorAll(".main-nav a[href]").forEach((a) => {
       const href = a.getAttribute("href") || "";
+      let targetPath = "";
       try {
-        const target = new URL(href, window.location.origin).pathname.replace(/\/+$/, "");
-        const active = cur === target || (cur.startsWith(target) && target.includes("/pages/"));
-        a.classList.toggle("active", active);
-      } catch (_) {}
+        // Resolve relative hrefs correctly
+        targetPath = normalize(new URL(href, window.location.origin).pathname);
+      } catch {
+        targetPath = normalize(href);
+      }
+
+      // If using base-prefixed absolute links, normalize them too
+      const curNoBase = normalize(cur.replace(base.toLowerCase(), "")) || "/";
+      const targetNoBase = normalize(targetPath.replace(base.toLowerCase(), "")) || "/";
+
+      const active =
+        curNoBase === targetNoBase ||
+        (targetNoBase !== "/" && curNoBase.startsWith(targetNoBase));
+
+      a.classList.toggle("active", active);
     });
 
-    // Year
+    // Footer year
     const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
-  };
-
-  const boot = async () => {
-    ensureSiteCSS();
-    try {
-      await insertHeaderFooter();
-    } catch (e) {
-      // Don’t hard-fail the page; just log
-      console.warn("[the-reverie] boot error:", e);
-    }
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
+    if (year) year.textContent = String(new Date().getFullYear());
+  });
 })();
