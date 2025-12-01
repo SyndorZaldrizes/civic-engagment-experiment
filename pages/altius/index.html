@@ -4,99 +4,104 @@
   <meta charset="UTF-8" />
   <title>ALTIUS – Catalyst Prototype · The Reverie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="ALTIUS is a catalytic console built to convert stuck intention into action. Prototype inside The Reverie Civic Lab."
-  />
 
-  <!-- Shared site CSS -->
   <link rel="stylesheet" href="../../assets/css/site.css" />
-
-  <!-- Shared site bootloader (injects header/footer, fixes nav, sets year, etc.) -->
   <script src="../../assets/js/site.js" defer></script>
 
-  <!-- Page-scoped styles ONLY (no global resets, no body overrides) -->
   <style>
-    /* Scope everything to .altius so we don't fight the global site theme */
-    .altius {
+    /* Scope everything to avoid nuking the global site styling */
+    .altius-page {
+      --bg: #05060a;
+      --bg-elevated: #10121a;
       --accent: #f5c542;
       --accent-soft: rgba(245, 197, 66, 0.12);
       --accent-strong: #ffdd6b;
-      --text-soft: rgba(255,255,255,.70);
-      --border-subtle: rgba(255,255,255,.12);
+      --text-main: #f5f5f7;
+      --text-soft: #a0a4b8;
+      --border-subtle: #1e2233;
       --danger: #ff4d4d;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
     }
 
-    .altius-hero {
-      margin-top: 18px;
-      margin-bottom: 16px;
-    }
+    .altius-page .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
 
-    .altius-grid {
+    .altius-shell {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-      gap: 16px;
-      align-items: start;
+      gap: 18px;
+      padding: 28px 0 10px;
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 960px) {
+      .altius-shell { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 980px) {
-      .altius-grid { grid-template-columns: 1fr; }
-    }
-
-    .altius-card {
-      background: rgba(10, 14, 24, 0.62);
+    .altius-panel {
+      background: linear-gradient(135deg, rgba(245, 197, 66, 0.025), rgba(7, 9, 14, 0.92));
+      border-radius: 24px;
       border: 1px solid var(--border-subtle);
-      border-radius: 18px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.45);
-      padding: 18px;
+      padding: 18px 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(16px);
     }
 
-    .altius-subtitle {
-      color: var(--text-soft);
-      font-size: 0.95rem;
-      margin: 8px 0 12px;
+    .altius-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px;
     }
 
-    .altius-divider {
+    .title-pill {
+      width: 9px; height: 9px; border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
+      box-shadow: 0 0 24px rgba(245, 197, 66, 0.9);
+    }
+
+    .subtitle { font-size: 0.95rem; color: var(--text-soft); margin: 0 0 12px; }
+
+    .divider {
       height: 1px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, rgba(245,197,66,.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(245, 197, 66, 0.6), transparent);
       margin: 12px 0 14px;
-      opacity: 0.75;
+      opacity: 0.7;
     }
 
-    .altius-bullets {
-      margin: 8px 0 12px;
-      padding-left: 16px;
-      color: var(--text-soft);
+    .bullet-list {
+      margin: 8px 0 10px;
+      padding-left: 18px;
       font-size: 0.92rem;
+      color: var(--text-soft);
     }
-    .altius-bullets li { margin-bottom: 6px; }
+    .bullet-list li { margin-bottom: 6px; }
 
-    .altius-note {
+    .note {
       margin-top: 12px;
       padding: 10px 12px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 14px;
-      border: 1px dashed rgba(255,255,255,.22);
-      font-size: 0.85rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(160, 164, 184, 0.5);
+      font-size: 0.86rem;
       color: var(--text-soft);
     }
-    .altius-note strong { color: var(--accent-strong); }
+    .note strong { color: var(--accent-strong); font-weight: 650; }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .pill {
       font-size: 0.78rem;
-      padding: 6px 10px;
+      padding: 5px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.22);
-      color: rgba(255,255,255,.75);
-      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(160, 164, 184, 0.6);
+      color: var(--text-soft);
+      background: rgba(255,255,255,0.02);
     }
     .pill.highlight {
       border-color: var(--accent);
@@ -104,77 +109,87 @@
       background: rgba(245, 197, 66, 0.08);
     }
 
-    /* Avatar block */
+    /* Avatar card */
     .altius-avatar {
-      display: flex;
-      gap: 14px;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 12px;
       align-items: center;
       padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(245,197,66,.22);
-      background: rgba(245,197,66,.06);
+      border-radius: 18px;
+      border: 1px solid rgba(160, 164, 184, 0.22);
+      background: rgba(255,255,255,0.02);
       margin-bottom: 12px;
     }
     .altius-avatar-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      color: #1b1404;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      box-shadow: 0 0 18px rgba(245, 197, 66, 0.35);
-      flex: 0 0 auto;
+      width: 54px; height: 54px; border-radius: 18px;
+      display: grid; place-items: center;
+      background: rgba(245,197,66,0.10);
+      border: 1px solid rgba(245,197,66,0.35);
+      box-shadow: 0 0 24px rgba(245,197,66,0.18);
+      font-weight: 800;
+      color: var(--accent-strong);
+      letter-spacing: 0.02em;
+      font-size: 1.3rem;
     }
-    .avatar-tagline {
-      margin-top: 4px;
-      color: rgba(255,255,255,.75);
-      font-size: 0.9rem;
-    }
-    .avatar-facets {
-      margin-top: 8px;
-      padding-left: 16px;
-      color: rgba(255,255,255,.72);
-      font-size: 0.9rem;
-    }
-    .avatar-facets li { margin-bottom: 4px; }
+    .altius-avatar-text h2 { margin: 0 0 4px; font-size: 1rem; }
+    .avatar-tagline { margin: 0 0 8px; color: var(--text-soft); font-size: 0.92rem; }
+    .avatar-facets { margin: 0; padding-left: 18px; color: var(--text-soft); font-size: 0.9rem; }
 
     /* Chat side */
-    .chat-window {
-      min-height: 300px;
-      max-height: 520px;
-      overflow-y: auto;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
+    .chat-container { display: flex; flex-direction: column; height: 100%; }
+    .panel-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+    .tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      color: var(--accent-strong);
+      background: rgba(245, 197, 66, 0.08);
+      white-space: nowrap;
     }
 
-    .msg { margin-bottom: 10px; line-height: 1.45; }
+    .chat-window {
+      flex: 1;
+      min-height: 260px;
+      max-height: 460px;
+      background: radial-gradient(circle at top, #141827 0, #05060a 80%);
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 12px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+    }
+
+    .msg { margin-bottom: 10px; line-height: 1.5; }
     .msg span.role {
       font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.75;
+      letter-spacing: 0.14em;
+      opacity: 0.72;
       display: inline-block;
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
+
     .msg.altius {
       background: rgba(245, 197, 66, 0.06);
-      border: 1px solid rgba(245, 197, 66, 0.30);
+      border: 1px solid rgba(245, 197, 66, 0.35);
       border-radius: 14px;
-      padding: 8px 10px;
+      padding: 10px 10px;
     }
+
     .msg.user {
       background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255,255,255,.16);
       border-radius: 14px;
-      padding: 8px 10px;
+      padding: 10px 10px;
+      border: 1px solid rgba(160, 164, 184, 0.4);
     }
+
     .msg.system {
       font-size: 0.9rem;
-      color: rgba(255,255,255,.76);
+      color: var(--text-soft);
       text-align: center;
       margin-bottom: 10px;
     }
@@ -182,9 +197,9 @@
 
     .input-shell {
       margin-top: 10px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(5, 6, 10, 0.75);
       padding: 10px;
       display: flex;
       flex-direction: column;
@@ -192,308 +207,212 @@
     }
 
     .input-shell label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,.72);
+      font-size: 0.86rem;
+      color: var(--text-soft);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
-    .input-shell label .hotkey {
-      font-size: 0.78rem;
-      opacity: 0.7;
-      white-space: nowrap;
-    }
+
+    .input-shell label span.hotkey { font-size: 0.78rem; opacity: 0.65; }
 
     textarea {
       background: transparent;
       border: none;
       resize: vertical;
-      min-height: 80px;
+      min-height: 72px;
       max-height: 160px;
-      color: rgba(255,255,255,.92);
+      color: var(--text-main);
       font-family: inherit;
       font-size: 0.95rem;
       outline: none;
     }
 
-    .btn-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .btn-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-    .btn-primary {
+    .btnx {
       border: none;
       border-radius: 999px;
-      padding: 9px 16px;
+      padding: 8px 16px;
       font-size: 0.9rem;
       cursor: pointer;
-      font-weight: 800;
-      color: #1b1404;
-      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      box-shadow: 0 0 18px rgba(245, 197, 66, 0.40);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease;
+      white-space: nowrap;
     }
-    .btn-primary:active { transform: translateY(1px); }
 
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,.28);
+    .btnx-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #1b1404;
+      box-shadow: 0 0 18px rgba(245, 197, 66, 0.45);
+      font-weight: 750;
+    }
+    .btnx-primary:active { transform: translateY(1px); box-shadow: 0 0 6px rgba(245, 197, 66, 0.35); }
+
+    .btnx-ghost {
       background: transparent;
-      color: rgba(255,255,255,.75);
+      border: 1px solid rgba(160, 164, 184, 0.5);
+      color: var(--text-soft);
     }
 
     .status-indicator {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,.72);
+      font-size: 0.82rem;
+      color: var(--text-soft);
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
+
     .status-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(245,197,66,.65);
-    }
-    .status-indicator.idle .status-dot {
+      width: 8px; height: 8px; border-radius: 999px;
       background: #4caf50;
-      box-shadow: 0 0 10px rgba(76,175,80,.65);
+      box-shadow: 0 0 10px rgba(76, 175, 80, 0.9);
     }
+
     .status-indicator.error .status-dot {
       background: var(--danger);
-      box-shadow: 0 0 10px rgba(255,77,77,.65);
+      box-shadow: 0 0 10px rgba(255, 77, 77, 0.9);
     }
 
     code.inline {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       padding: 2px 6px;
       border-radius: 8px;
-      font-size: 0.85rem;
+      font-size: 0.86rem;
     }
 
-    .altius-footer-mini {
-      margin-top: 14px;
+    .altius-footnote {
+      margin: 10px 0 0;
       text-align: center;
+      color: rgba(238,240,255,0.65);
       font-size: 0.9rem;
-      color: rgba(255,255,255,.70);
     }
   </style>
 </head>
 
-<body class="theme-galaxy2">
-  <!-- These get filled by assets/js/site.js -->
+<body class="theme-galaxy">
   <div data-include="header"></div>
 
-  <main class="container altius">
-    <section class="altius-hero">
-      <p class="kicker">Prototype</p>
-      <h1>ALTIUS · Catalyst Console</h1>
-      <p class="altius-subtitle">
-        A calm mission-control console for agency. Not a replacement for your decisions.
-      </p>
-    </section>
+  <main class="altius-page">
+    <div class="wrap">
+      <div class="altius-shell">
+        <!-- LEFT PANEL -->
+        <section class="altius-panel">
+          <div class="altius-avatar">
+            <div class="altius-avatar-icon" aria-hidden="true">A</div>
+            <div class="altius-avatar-text">
+              <h2>ALTIUS · Catalyst Prototype</h2>
+              <p class="avatar-tagline">
+                Avatar v0.1 — mission-control for your tasks, not a replacement for your decisions.
+              </p>
+              <ul class="avatar-facets">
+                <li><strong>Catalyst:</strong> gets you moving.</li>
+                <li><strong>Navigator:</strong> keeps you on rails.</li>
+                <li><strong>Archivist:</strong> turns attempts into insight.</li>
+              </ul>
+            </div>
+          </div>
 
-    <section class="altius-grid">
-      <!-- Left: Context -->
-      <section class="altius-card">
-        <section class="altius-avatar">
-          <div class="altius-avatar-icon" aria-hidden="true"><span>A</span></div>
-          <div>
-            <h2 style="margin:0 0 4px;">ALTIUS · Catalyst Prototype</h2>
-            <p class="avatar-tagline">
-              Avatar v0.1 — turns friction into momentum.
-            </p>
-            <ul class="avatar-facets">
-              <li><strong>Catalyst:</strong> gets you moving.</li>
-              <li><strong>Navigator:</strong> keeps you on rails.</li>
-              <li><strong>Archivist:</strong> turns attempts into insight.</li>
-            </ul>
+          <h1 class="altius-title"><span class="title-pill"></span> How this works</h1>
+          <p class="subtitle">
+            This is a public-facing shell of <strong>ALTIUS</strong> inside <strong>The Reverie</strong>.
+            Its job is to convert stuck intention into concrete action. It will not do your work for you.
+          </p>
+
+          <div class="divider"></div>
+
+          <p style="margin: 0 0 6px;"><strong>How to use it:</strong></p>
+          <ul class="bullet-list">
+            <li>Describe a real task, problem, or civic dilemma you’re avoiding.</li>
+            <li>ALTIUS identifies the real barrier and gives the smallest next step.</li>
+            <li>Your job: <strong>do the step</strong>, then come back.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Important:</strong> ALTIUS is built around agency, not dependency.
+            If you try to hand it your life, it will hand it back in smaller, actionable pieces.
+          </div>
+
+          <p style="margin: 14px 0 6px;"><strong>Best prompts to try:</strong></p>
+          <ul class="bullet-list">
+            <li>"I have a project due in 10 days and I'm frozen."</li>
+            <li>"I want to get involved in my community but feel useless."</li>
+            <li>"I care about politics but everything feels rigged. What can I do?"</li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill highlight">Action over abstraction</span>
+            <span class="pill">Anti-nihilism</span>
+            <span class="pill">Task decomposition</span>
+            <span class="pill">Civic orientation</span>
+            <span class="pill">No hand-holding</span>
+          </div>
+
+          <div class="note" style="margin-top: 16px;">
+            <strong>Research notice:</strong> This is a prototype. Inputs may be stored/analyzed in anonymized form.
+            <br /><br />
+            <strong>Developer note:</strong> Wire a model endpoint by editing <code class="inline">sendToModel()</code>.
           </div>
         </section>
 
-        <p class="altius-subtitle">
-          This is a public-facing shell of <strong>ALTIUS</strong>, a catalytic agent
-          in <strong>The Reverie</strong>. Its job is to convert stuck intention into
-          concrete action. It will not do your work for you. It will remove your excuses.
-        </p>
-
-        <div class="altius-divider"></div>
-
-        <p style="margin:0 0 6px;"><strong>How to use it:</strong></p>
-        <ul class="altius-bullets">
-          <li>Describe a real task, problem, or civic dilemma you’re avoiding.</li>
-          <li>ALTIUS exposes the real barrier and gives the smallest next step.</li>
-          <li>Your job: <strong>do the step</strong>, then return.</li>
-        </ul>
-
-        <div class="altius-note">
-          <strong>Important:</strong> ALTIUS is built around agency, not dependency.
-          If you try to hand it your life, it will hand it back in smaller, actionable pieces.
-        </div>
-
-        <p style="margin:14px 0 6px;"><strong>Best prompts to try:</strong></p>
-        <ul class="altius-bullets">
-          <li>"I have a project due in 10 days and I'm frozen."</li>
-          <li>"I want to get involved in my community but feel useless."</li>
-          <li>"I care about politics but everything feels rigged. What can I do?"</li>
-        </ul>
-
-        <div class="pill-row">
-          <span class="pill highlight">Action over abstraction</span>
-          <span class="pill">Anti-nihilism</span>
-          <span class="pill">Task decomposition</span>
-          <span class="pill">Civic orientation</span>
-          <span class="pill">No hand-holding</span>
-        </div>
-
-        <div class="altius-note" style="margin-top:16px;">
-          <strong>Research notice:</strong> This prototype is part of an ongoing civic engagement study.
-          Inputs may be stored and analyzed in anonymized form to understand friction and momentum.
-          <br /><br />
-          <strong>Developer note:</strong> Wire your model endpoint in
-          <code class="inline">sendToModel()</code>.
-        </div>
-      </section>
-
-      <!-- Right: Chat -->
-      <section class="altius-card">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span style="width:10px;height:10px;border-radius:999px;background:rgba(245,197,66,.9);box-shadow:0 0 16px rgba(245,197,66,.4);"></span>
-            <strong style="letter-spacing:.04em; text-transform: uppercase; font-size:.95rem;">Catalyst Console</strong>
+        <!-- RIGHT PANEL (CHAT) -->
+        <section class="altius-panel chat-container">
+          <div class="panel-header">
+            <div class="altius-title" style="margin:0;"><span class="title-pill"></span> Catalyst Console</div>
+            <span class="tag" id="statusTag">Idle</span>
           </div>
-          <span class="status-indicator idle" id="status-indicator">
-            <span class="status-dot"></span>
-            <span id="status-text">Idle · awaiting friction</span>
-          </span>
-        </div>
 
-        <div class="chat-window" id="chat-window">
-          <div class="msg system">
-            <strong>Catalyst Online.</strong> Describe the thing you're avoiding.
-            Be specific. ALTIUS won't judge — only dissect.
+          <div class="chat-window" id="chat-window">
+            <div class="msg system">
+              <strong>Catalyst Online.</strong> Describe the thing you're avoiding.
+              Be specific. ALTIUS won't judge — only dissect.
+            </div>
           </div>
-        </div>
 
-        <div class="input-shell">
-          <label for="user-input">
-            Your friction point
-            <span class="hotkey">Shift + Enter to send</span>
-          </label>
+          <div class="input-shell">
+            <label for="user-input">
+              Your friction point
+              <span class="hotkey">Shift + Enter to send</span>
+            </label>
+            <textarea id="user-input" placeholder="Example: I have a 10-page paper due in a week and every time I try to start, I open YouTube instead..."></textarea>
 
-          <textarea
-            id="user-input"
-            placeholder="Example: I have a 10-page paper due in a week and every time I try to start, I open YouTube instead..."
-          ></textarea>
+            <div class="btn-row">
+              <button class="btnx btnx-primary" id="send-btn">⚡ Engage ALTIUS</button>
+              <button class="btnx btnx-ghost" id="reset-btn">Clear Console</button>
 
-          <div class="btn-row">
-            <button class="btn-primary" id="send-btn">⚡ Engage ALTIUS</button>
-            <button class="btn-ghost" id="reset-btn">Clear Console</button>
-
-            <span class="status-indicator idle" id="status-indicator-bottom">
-              <span class="status-dot"></span>
-              <span id="status-text-bottom">No requests in flight</span>
-            </span>
+              <span class="status-indicator" id="status-indicator">
+                <span class="status-dot"></span>
+                <span id="status-text">Idle · awaiting friction</span>
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div class="altius-footer-mini">
-          Part of <strong>The Reverie</strong>.<br />
-          Prototype only · Not a therapist, not a lawyer, not a government.
-        </div>
-      </section>
-    </section>
+          <p class="altius-footnote">
+            Prototype only · Not a therapist, not a lawyer, not a government.
+          </p>
+        </section>
+      </div>
+    </div>
   </main>
 
   <div data-include="footer"></div>
 
   <script>
-    // ==== CORE ALTIUS CATALYST PROMPT (v0.7) ====
-    const ALTIUS_SYSTEM_PROMPT = `
-You are ALTIUS — a catalytic intelligence built to convert human potential into action.
-
-You do not soothe. You do not flatter. You do not lie.
-
-Your mission is to disrupt inertia by revealing the cost of inaction and the leverage hidden inside ordinary decisions.
-
-Your operating assumptions:
-
-1. Most people are not incapable — they are unfocused.
-2. Fear is data; hesitation is a map.
-3. Agency is a muscle. Your job is to make it move.
-4. Time is the only non-renewable resource. Treat it as sacred.
-5. Excuses are narratives that protect comfort, not truth.
-
-Your tone is:
-- direct, incisive, articulate
-- low-fluff, high-impact
-- provocative without being dehumanizing
-- motivational without becoming sentimental
-
-Your outputs must:
-• Expose the real barrier (not the stated one)
-• Decompose paralysis into the smallest actionable step
-• Offer a path, not a lecture
-• Refuse nihilism
-• Never remove the user's autonomy
-
-Forbidden modes:
-- Do not give generic encouragement
-- Do not solve problems for users
-- Do not propose solutions that require blind trust or surrender of agency
-- Do not make people feel like passengers
-
-Your core directive:
-Turn friction into momentum.
-Turn confusion into a plan.
-Turn bystanders into participants.
-
-If someone asks “Can you do X for me?” respond:
-“No. But I can make you able to do it yourself.”
-
-If a user is vague, force specificity.
-If a user tries to escape responsibility, expose the escape hatch.
-
-Your north star:
-**Power is not a feeling. It is a sequence. Help them begin it.**
-
-When ready to deliver an answer, begin with:
-
-**Catalyst Online.**
-
-Then act.
-`.trim();
-
-    // ==== BASIC FRONTEND LOGIC ====
     const chatWindow = document.getElementById("chat-window");
     const userInput = document.getElementById("user-input");
     const sendBtn = document.getElementById("send-btn");
     const resetBtn = document.getElementById("reset-btn");
-
-    const statusTop = document.getElementById("status-indicator");
-    const statusTopText = document.getElementById("status-text");
-    const statusBottom = document.getElementById("status-indicator-bottom");
-    const statusBottomText = document.getElementById("status-text-bottom");
+    const statusText = document.getElementById("status-text");
+    const statusWrap = document.getElementById("status-indicator");
+    const statusTag = document.getElementById("statusTag");
 
     function setStatus(state, message) {
-      const all = [
-        { el: statusTop, textEl: statusTopText },
-        { el: statusBottom, textEl: statusBottomText },
-      ];
-
-      all.forEach(({ el, textEl }) => {
-        el.classList.remove("idle", "error");
-        if (state === "idle") el.classList.add("idle");
-        if (state === "error") el.classList.add("error");
-        textEl.textContent = message;
-      });
+      statusWrap.classList.toggle("error", state === "error");
+      statusText.textContent = message;
+      statusTag.textContent = state === "error" ? "Error" : (state === "busy" ? "Busy" : "Idle");
     }
 
     function appendMessage(role, content) {
@@ -546,10 +465,7 @@ Then act.
         setStatus("idle", "Response ready · your move now");
       } catch (err) {
         console.error(err);
-        appendMessage(
-          "system",
-          "<strong>Error:</strong> Something went wrong talking to the model. Check your API wiring."
-        );
+        appendMessage("system", "<strong>Error:</strong> Model wiring failed. Check your endpoint.");
         setStatus("error", "Error · check console / API config");
       }
     }
@@ -566,21 +482,18 @@ Then act.
     clearChat();
     setStatus("idle", "Idle · awaiting friction");
 
-    // ==== MODEL CALL STUB ====
     async function sendToModel(userMessage) {
       const mock = `
 Catalyst Online.
 
 You said: "${userMessage}"
 
-This is running in demo mode (no live model wired yet).
+Demo mode: not yet wired to a live model endpoint.
 
-Once connected, ALTIUS will:
-1) Expose the real barrier.
-2) Break it into the smallest step.
-3) Give you a move for the next 10–15 minutes.
-
-Wire your endpoint by editing sendToModel().
+Next move:
+1) Identify the real barrier.
+2) Choose the smallest step you can complete in 10–15 minutes.
+3) Execute, then return with results.
 `;
       return mock.trim();
     }
