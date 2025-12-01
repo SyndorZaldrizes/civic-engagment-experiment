@@ -8,8 +8,16 @@
     name="description"
     content="A civic lab testing how people actually learn democracy—from campus experiments and research on democratic erosion to youth projects and applied Civic Lab work."
   />
+
+  <!-- Canonical (preferred) -->
+  <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Fallbacks while you migrate (remove once assets versions exist everywhere) -->
+  <link rel="stylesheet" href="site.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <!-- HEADER / NAV -->
   <header class="site-header">
@@ -20,14 +28,15 @@
       </a>
     </div>
 
-    <button class="nav-toggle" aria-label="Toggle navigation">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span class="nav-toggle-bar"></span>
       <span class="nav-toggle-bar"></span>
     </button>
 
     <nav class="main-nav" aria-label="Primary navigation">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <!-- removed hardcoded class="active" — script sets it based on URL -->
+        <li><a href="index.html">Home</a></li>
         <li><a href="journal-memo.html">Journal Memo</a></li>
         <li><a href="dissertation.html">Dissertation</a></li>
         <li><a href="civicengagementproject.html">Civic Engagement Project</a></li>
@@ -97,7 +106,6 @@
       </div>
 
       <div class="paths-grid">
-        <!-- Professors / Students -->
         <article class="path-card">
           <h3>Read &amp; Research</h3>
           <p class="path-tag">Professors · Students · Researchers</p>
@@ -112,7 +120,6 @@
           </ul>
         </article>
 
-        <!-- Youth / Community -->
         <article class="path-card">
           <h3>Learn &amp; Play</h3>
           <p class="path-tag">Youth · First-time voters · Community</p>
@@ -125,7 +132,6 @@
           </ul>
         </article>
 
-        <!-- Civic Lab / Services -->
         <article class="path-card">
           <h3>Build &amp; Collaborate</h3>
           <p class="path-tag">Clubs · Delegations · Orgs · Educators</p>
@@ -139,7 +145,6 @@
           </ul>
         </article>
 
-        <!-- Experiments / Methods -->
         <article class="path-card">
           <h3>Test &amp; Measure</h3>
           <p class="path-tag">Methods nerds · Co-researchers</p>
@@ -217,13 +222,8 @@
           </p>
           <ul class="feature-points">
             <li>Built around action, not vibes&mdash;it breaks problems into concrete moves.</li>
-            <li>
-              Designed to challenge apathy and avoidance while still respecting autonomy.
-            </li>
-            <li>
-              Early-stage prototype feeding anonymized insights into the broader civic
-              engagement research.
-            </li>
+            <li>Designed to challenge apathy and avoidance while still respecting autonomy.</li>
+            <li>Early-stage prototype feeding anonymized insights into the broader civic engagement research.</li>
           </ul>
           <a href="altius.html" class="btn btn-secondary">
             Try ALTIUS (Beta)
@@ -234,13 +234,8 @@
           <p class="feature-label">Best starting point if you’re:</p>
           <ul>
             <li>A student who knows what to do “in theory” but can’t start.</li>
-            <li>
-              Someone who cares about politics or community but feels paralyzed or
-              overwhelmed.
-            </li>
-            <li>
-              A methods / AI nerd curious about what a civic-aligned agent can do.
-            </li>
+            <li>Someone who cares about politics or community but feels paralyzed or overwhelmed.</li>
+            <li>A methods / AI nerd curious about what a civic-aligned agent can do.</li>
           </ul>
         </div>
       </div>
@@ -258,10 +253,7 @@
           <ul class="feature-points">
             <li>Combines surveys, workshops, and low-stakes civic simulations.</li>
             <li>Connects democratic erosion theory to lived experience on a real campus.</li>
-            <li>
-              Feeds into concrete recommendations for student orgs, administrators, and
-              future iterations of the Civic Lab.
-            </li>
+            <li>Feeds into concrete recommendations for student orgs, administrators, and future iterations of the Civic Lab.</li>
           </ul>
           <a href="study-details.html" class="btn btn-primary">
             See the study design
@@ -273,10 +265,7 @@
           <ul>
             <li>A professor curious about collaboration or data.</li>
             <li>A student leader dealing with turnout, apathy, or trust issues.</li>
-            <li>
-              A partner or org thinking about piloting civic experiments before scaling
-              them.
-            </li>
+            <li>A partner or org thinking about piloting civic experiments before scaling them.</li>
           </ul>
         </div>
       </div>
@@ -366,22 +355,40 @@
     </div>
   </footer>
 
-  <!-- SIMPLE JS: NAV TOGGLE + YEAR -->
+  <!-- JS: Nav toggle + active link + year (base-path safe for GH Pages project site) -->
   <script>
+    // Toggle
     const navToggle = document.querySelector('.nav-toggle');
     const mainNav = document.querySelector('.main-nav');
 
     if (navToggle && mainNav) {
       navToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('nav-open');
-        navToggle.classList.toggle('nav-open');
+        const open = mainNav.classList.toggle('nav-open');
+        navToggle.classList.toggle('nav-open', open);
+        navToggle.setAttribute('aria-expanded', String(open));
       });
     }
 
+    // Year
     const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+
+    // Active link (supports /<repo>/... GitHub Pages paths)
+    (function setActiveNavLink(){
+      const links = document.querySelectorAll('.main-nav a[href]');
+      if (!links.length) return;
+
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(Boolean);
+      const file = (parts[parts.length - 1] || 'index.html').toLowerCase();
+
+      links.forEach(a => {
+        const href = (a.getAttribute('href') || '').toLowerCase();
+        // match exact filename or index.html default
+        const active = (href === file) || (file === '' && href === 'index.html');
+        a.classList.toggle('active', active);
+      });
+    })();
   </script>
 </body>
 </html>
