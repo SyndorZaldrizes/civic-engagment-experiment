@@ -1,394 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Civic Engagement Experiment &amp; Lab</title>
+  <title>The Reverie — Civic Research + Civic Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="A civic lab testing how people actually learn democracy—from campus experiments and research on democratic erosion to youth projects and applied Civic Lab work."
-  />
+  <meta name="description" content="The Reverie is a public-facing research hub and civic design lab: democratic erosion, civic learning, youth engagement, and prototypes (including ALTIUS)." />
 
-  <!-- Canonical (preferred) -->
+  <!-- Shared theme -->
   <link rel="stylesheet" href="assets/css/site.css" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
 
-  <!-- Fallbacks while you migrate (remove once assets versions exist everywhere) -->
-  <link rel="stylesheet" href="site.css" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Shared behavior: nav injection, mobile toggle, year -->
+  <script src="assets/js/site.js" defer></script>
 </head>
 
-<body>
-  <!-- HEADER / NAV -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <span class="brand-main">Civic Engagement</span>
-        <span class="brand-sub">Experiment &amp; Lab</span>
-      </a>
-    </div>
+<body class="theme-galaxy">
+  <!-- Shared header injected by site.js -->
+  <div data-include="header"></div>
 
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
-
-    <nav class="main-nav" aria-label="Primary navigation">
-      <ul>
-        <!-- removed hardcoded class="active" — script sets it based on URL -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal-memo.html">Journal Memo</a></li>
-        <li><a href="dissertation.html">Dissertation</a></li>
-        <li><a href="civicengagementproject.html">Civic Engagement Project</a></li>
-        <li><a href="study-details.html">Study Details</a></li>
-        <li><a href="questionnaires.html">Questionnaires</a></li>
-        <li><a href="civic-lab.html">Civic Lab</a></li>
-        <li><a href="altius.html">ALTIUS Prototype</a></li>
-        <li><a href="venture-overview.html">Venture</a></li>
-        <li><a href="market-research.html">Market Research</a></li>
-        <li><a href="references.html">References</a></li>
-        <li><a href="product-prototype.html">Product Prototype</a></li>
-        <li>
-          <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
-            MSL Site ↗
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-inner">
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div class="hero-text">
-          <p class="hero-kicker">Living civic lab</p>
-          <h1>Civic Engagement Experiment &amp; Lab</h1>
-          <p class="hero-subtitle">
-            A civic lab testing how people actually learn democracy&mdash;from campus
-            experiments and research on democratic erosion to youth-facing projects and
-            applied Civic Lab work with real organizations.
+          <p class="kicker">Public research hub + civic lab</p>
+          <h1>The Reverie</h1>
+          <p class="lead">
+            A living lab for democracy: academic research on democratic erosion and civic learning,
+            plus field-tested civic tools, experiments, and prototypes—including ALTIUS.
           </p>
 
-          <div class="hero-actions">
-            <a href="civicengagementproject.html" class="btn btn-primary">
-              Start with Civic Engagement Project
-            </a>
-            <a href="civic-lab.html" class="btn btn-secondary">
-              Explore Civic Lab &amp; Services
-            </a>
-            <a href="journal-memo.html" class="hero-link">
-              See research &amp; journal memos →
-            </a>
+          <div class="actions">
+            <a class="btn primary" href="pages/research/">Enter the research</a>
+            <a class="btn" href="pages/civic-lab/">Explore the Civic Lab</a>
+            <a class="link" href="pages/altius/">ALTIUS prototype →</a>
           </div>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="orbit orbit-outer"></div>
-          <div class="orbit orbit-middle"></div>
-          <div class="orbit orbit-inner"></div>
-          <div class="hero-planet"></div>
-          <div class="hero-star hero-star-1"></div>
-          <div class="hero-star hero-star-2"></div>
-          <div class="hero-star hero-star-3"></div>
+        <div class="hero-card">
+          <h2>Start here</h2>
+          <ul class="quick">
+            <li><a href="pages/research/">Research (dissertation-scale thread)</a></li>
+            <li><a href="pages/civic-lab/">Civic Lab (games + modules)</a></li>
+            <li><a href="pages/venture/">Venture (market + prototypes)</a></li>
+            <li><a href="pages/references/">References</a></li>
+          </ul>
+
+          <div class="callout">
+            <p class="callout-title">Parallel project</p>
+            <p class="callout-body">
+              Maryland Student Legislature @ SMCM (operational site)
+            </p>
+            <a class="btn small" href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
+              Visit MSL Site ↗
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PATHWAYS -->
-    <section class="paths">
-      <div class="section-header">
-        <h2>Choose your path</h2>
-        <p>
-          Same universe, different entry points. Start where it makes the most sense for you
-          right now.
-        </p>
-      </div>
-
-      <div class="paths-grid">
-        <article class="path-card">
-          <h3>Read &amp; Research</h3>
-          <p class="path-tag">Professors · Students · Researchers</p>
-          <p>
-            This is the academic backbone: journal memos, course papers, and the
-            dissertation work on democratic erosion, economic inequality, and civic
-            engagement in the U.S.
-          </p>
-          <ul class="path-links">
-            <li><a href="journal-memo.html">Journal Memo hub →</a></li>
-            <li><a href="dissertation.html">Dissertation project overview →</a></li>
-          </ul>
-        </article>
-
-        <article class="path-card">
-          <h3>Learn &amp; Play</h3>
-          <p class="path-tag">Youth · First-time voters · Community</p>
-          <p>
-            Youth-friendly explainers and mission-style activities that make politics less
-            abstract and more “this actually touches my life”&mdash;without dumbing it down.
-          </p>
-          <ul class="path-links">
-            <li><a href="civicengagementproject.html">Civic Engagement Project →</a></li>
-          </ul>
-        </article>
-
-        <article class="path-card">
-          <h3>Build &amp; Collaborate</h3>
-          <p class="path-tag">Clubs · Delegations · Orgs · Educators</p>
-          <p>
-            The applied side of the lab: workshops, civic blueprints, and advisory support
-            for student governments, MSL delegations, classes, and small civic organizations.
-          </p>
-          <ul class="path-links">
-            <li><a href="civic-lab.html">Civic Lab services →</a></li>
-            <li><a href="venture-overview.html">Venture overview →</a></li>
-          </ul>
-        </article>
-
-        <article class="path-card">
-          <h3>Test &amp; Measure</h3>
-          <p class="path-tag">Methods nerds · Co-researchers</p>
-          <p>
-            See how the experiments are built: study design, questionnaires, and the
-            sandbox where new ideas get stress-tested, iterated, and sometimes broken on
-            purpose.
-          </p>
-          <ul class="path-links">
-            <li><a href="study-details.html">Study details &amp; methods →</a></li>
-            <li><a href="questionnaires.html">Questionnaires &amp; templates →</a></li>
-            <li><a href="notes.html">Notes &amp; sandbox →</a></li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- WHAT THIS LAB DOES -->
-    <section class="pillars">
-      <div class="section-header">
-        <h2>What this lab actually does</h2>
-        <p>
-          Under the galaxy background there’s a simple project: track how real people,
-          especially students and youth, experience and practice democracy&mdash;and then
-          build things that help.
-        </p>
-      </div>
-
-      <div class="pillars-grid">
-        <article class="pillar">
-          <h3>Research</h3>
-          <p>
-            Journal memos, American politics papers, and a dissertation-scale project on
-            economic inequality, democratic erosion, and civic learning.
-          </p>
-        </article>
-
-        <article class="pillar">
-          <h3>Building</h3>
-          <p>
-            Translating theory into tangible artifacts: youth explainers, campus activities,
-            mini-curricula, and tools that clubs and classrooms can actually deploy.
-          </p>
-        </article>
-
-        <article class="pillar">
-          <h3>Civic Lab</h3>
-          <p>
-            A quasi-consulting arm for student governments, MSL delegations, and small
-            orgs that want help designing engagement strategies, workshops, or field
-            experiments.
-          </p>
-        </article>
-
-        <article class="pillar">
-          <h3>Experiments</h3>
-          <p>
-            Surveys, simulations, workshops, and feedback loops that measure what moves
-            people from apathy to action or from confusion to “okay, I get this now.”
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ALTIUS FEATURE BLOCK -->
-    <section class="feature">
-      <div class="feature-inner">
-        <div class="feature-text">
-          <h2>ALTIUS: Catalyst Prototype</h2>
-          <p>
-            ALTIUS is an experimental AI agent inside the Civic Engagement Experiment. It
-            doesn’t do tasks for you&mdash;it pushes you from “stuck” to “moving,” one
-            small step at a time. Think of it as a catalytic console for agency, not a
-            homework machine.
-          </p>
-          <ul class="feature-points">
-            <li>Built around action, not vibes&mdash;it breaks problems into concrete moves.</li>
-            <li>Designed to challenge apathy and avoidance while still respecting autonomy.</li>
-            <li>Early-stage prototype feeding anonymized insights into the broader civic engagement research.</li>
-          </ul>
-          <a href="altius.html" class="btn btn-secondary">
-            Try ALTIUS (Beta)
-          </a>
-        </div>
-
-        <div class="feature-meta">
-          <p class="feature-label">Best starting point if you’re:</p>
-          <ul>
-            <li>A student who knows what to do “in theory” but can’t start.</li>
-            <li>Someone who cares about politics or community but feels paralyzed or overwhelmed.</li>
-            <li>A methods / AI nerd curious about what a civic-aligned agent can do.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURED PROJECT: CAMPUS STUDY -->
-    <section class="feature">
-      <div class="feature-inner">
-        <div class="feature-text">
-          <h2>Featured: Campus Democratic Engagement Study</h2>
-          <p>
-            A multi-stage experiment on campus, tracking how messages, peer networks, and
-            trust in institutions shape students’ willingness to engage in democratic life.
-          </p>
-          <ul class="feature-points">
-            <li>Combines surveys, workshops, and low-stakes civic simulations.</li>
-            <li>Connects democratic erosion theory to lived experience on a real campus.</li>
-            <li>Feeds into concrete recommendations for student orgs, administrators, and future iterations of the Civic Lab.</li>
-          </ul>
-          <a href="study-details.html" class="btn btn-primary">
-            See the study design
-          </a>
-        </div>
-
-        <div class="feature-meta">
-          <p class="feature-label">Best starting point if you’re:</p>
-          <ul>
-            <li>A professor curious about collaboration or data.</li>
-            <li>A student leader dealing with turnout, apathy, or trust issues.</li>
-            <li>A partner or org thinking about piloting civic experiments before scaling them.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- BUSINESS / VENTURE GLIMPSE -->
     <section class="section">
-      <div class="section-header">
-        <h2>Venture track: from lab to real-world pilots</h2>
-        <p>
-          The Civic Lab doesn’t just stay on paper. There’s a parallel track exploring what
-          it means to turn these ideas into services, pilots, and eventually a sustainable
-          venture.
-        </p>
+      <div class="wrap">
+        <header class="section-head">
+          <h2>What this is</h2>
+          <p>
+            The Reverie is deliberately bilingual: rigorous enough for academia, usable enough for real people.
+            Research generates claims; prototypes generate feedback; the loop tightens over time.
+          </p>
+        </header>
+
+        <div class="grid3">
+          <article class="card">
+            <h3>Research</h3>
+            <p>Democratic erosion, inequality, political behavior, civic learning—mapped into a dissertation-scale thread.</p>
+            <a class="textlink" href="pages/research/">Research hub →</a>
+          </article>
+
+          <article class="card">
+            <h3>Civic Lab</h3>
+            <p>Interactive civic modules and “serious games” that make democracy legible without turning it into a children’s book.</p>
+            <a class="textlink" href="pages/civic-lab/">Civic Lab →</a>
+          </article>
+
+          <article class="card">
+            <h3>ALTIUS</h3>
+            <p>An experimental agent concept: catalyst for agency. Not “do my homework,” more “stop freezing and move.”</p>
+            <a class="textlink" href="pages/altius/">ALTIUS →</a>
+          </article>
+        </div>
       </div>
-      <div class="grid-3">
-        <article class="path-card">
-          <h3>Venture Overview</h3>
-          <p>
-            Big-picture framing of what the Civic Lab could become as a long-term
-            organization: audiences, offerings, and theory of change.
-          </p>
-          <ul class="path-links">
-            <li><a href="venture-overview.html">Read the venture overview →</a></li>
-          </ul>
-        </article>
-        <article class="path-card">
-          <h3>Market Research</h3>
-          <p>
-            Early-stage research into who might actually use this stuff: student orgs,
-            schools, nonprofits, and civic programs hunting for better engagement tools.
-          </p>
-          <ul class="path-links">
-            <li><a href="market-research.html">See market research notes →</a></li>
-          </ul>
-        </article>
-        <article class="path-card">
-          <h3>Product Prototypes</h3>
-          <p>
-            Drafts, mockups, and prototypes of tools and blueprints that bridge the gap
-            between “class project” and “usable product.”
-          </p>
-          <ul class="path-links">
-            <li><a href="product-prototype.html">Explore prototypes →</a></li>
-          </ul>
-        </article>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Venture track</h2>
+          <p>Because “cool idea” dies quickly unless it can be piloted, funded, and maintained.</p>
+        </header>
+
+        <div class="grid3">
+          <article class="card">
+            <h3>Venture overview</h3>
+            <p>What this becomes if it survives: offerings, audiences, theory of change.</p>
+            <a class="textlink" href="pages/venture/">Venture →</a>
+          </article>
+
+          <article class="card">
+            <h3>Market research</h3>
+            <p>Who actually buys/uses civic engagement tools (schools, orgs, programs, student gov ecosystems)?</p>
+            <a class="textlink" href="pages/venture/market-research.html">Market research →</a>
+          </article>
+
+          <article class="card">
+            <h3>Product prototypes</h3>
+            <p>Drafts and prototypes that bridge “academic framework” to “usable civic product.”</p>
+            <a class="textlink" href="pages/venture/product-prototypes.html">Prototypes →</a>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-about">
-        <h3>About the lab</h3>
-        <p>
-          The Civic Engagement Experiment &amp; Lab is run by a student who splits time
-          between campaigns, the Maryland General Assembly ecosystem, and campus organizing&mdash;
-          trying to connect democratic theory, youth engagement, and real-world practice.
-        </p>
-        <a href="team-contact.html">Team &amp; contact →</a>
-      </div>
-
-      <div class="footer-links">
-        <h3>Quick links</h3>
-        <ul>
-          <li><a href="civic-lab.html">Civic Lab services</a></li>
-          <li><a href="civicengagementproject.html">Youth civic project</a></li>
-          <li><a href="references.html">References &amp; sources</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h3>Partners</h3>
-        <ul>
-          <li>
-            <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
-              Maryland Student Legislature @ SMCM ↗
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Civic Engagement Experiment &amp; Lab.</p>
-    </div>
-  </footer>
-
-  <!-- JS: Nav toggle + active link + year (base-path safe for GH Pages project site) -->
-  <script>
-    // Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    if (navToggle && mainNav) {
-      navToggle.addEventListener('click', () => {
-        const open = mainNav.classList.toggle('nav-open');
-        navToggle.classList.toggle('nav-open', open);
-        navToggle.setAttribute('aria-expanded', String(open));
-      });
-    }
-
-    // Year
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-    // Active link (supports /<repo>/... GitHub Pages paths)
-    (function setActiveNavLink(){
-      const links = document.querySelectorAll('.main-nav a[href]');
-      if (!links.length) return;
-
-      const path = window.location.pathname;
-      const parts = path.split('/').filter(Boolean);
-      const file = (parts[parts.length - 1] || 'index.html').toLowerCase();
-
-      links.forEach(a => {
-        const href = (a.getAttribute('href') || '').toLowerCase();
-        // match exact filename or index.html default
-        const active = (href === file) || (file === '' && href === 'index.html');
-        a.classList.toggle('active', active);
-      });
-    })();
-  </script>
+  <!-- Shared footer injected by site.js -->
+  <div data-include="footer"></div>
 </body>
 </html>
