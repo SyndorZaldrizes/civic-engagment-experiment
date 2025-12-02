@@ -1,426 +1,335 @@
-<!-- civic-lab.html – Civic Lab services, games, and applied experiments (refactored) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Civic Lab – Civic Engagement Experiment &amp; Lab</title>
+  <title>Civic Lab — The Reverie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Civic Lab services, game‑style activities, and AI‑assisted tools to help student orgs, classes, and youth projects build real democratic engagement."
+    content="Civic Lab services, game-style activities, and applied experiments to help student orgs, classes, and youth projects build real democratic engagement."
   />
-  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="/the-reverie/assets/css/site.css" />
+  <script src="/the-reverie/assets/js/site.js" defer></script>
+
+  <style>
+    .lab-hero { padding: 42px 0 12px; }
+    .lab-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .lab-grid { grid-template-columns: 1fr; } }
+
+    .mini { color: rgba(238,240,255,0.75); margin: 8px 0 0; }
+    .tagline { color: rgba(238,240,255,0.82); margin: 10px 0 0; }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .pill {
+      border: 1px solid rgba(160,164,184,0.28);
+      background: rgba(255,255,255,0.03);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: rgba(238,240,255,0.84);
+    }
+    .pill.hot{
+      border-color: rgba(245,197,66,0.55);
+      background: rgba(245,197,66,0.10);
+      color: rgba(255,221,107,0.98);
+    }
+
+    .activity { padding: 16px; }
+    .activity h3 { margin: 0 0 8px; }
+    .activity p { margin: 0 0 10px; color: rgba(238,240,255,0.80); }
+    .activity .small { margin-top: 10px; color: rgba(238,240,255,0.72); }
+    .activity ol, .activity ul { margin: 8px 0 0; color: rgba(238,240,255,0.84); }
+    .activity li { margin: 6px 0; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+    .calloutbox{ padding: 16px; }
+    .calloutbox h3{ margin: 0 0 8px; }
+    .calloutbox p{ margin: 0 0 10px; color: rgba(238,240,255,0.78); }
+    .calloutbox ul{ margin: 0; padding-left: 18px; color: rgba(238,240,255,0.86); }
+    .calloutbox li{ margin: 7px 0; }
+
+    .cta-row { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  </style>
 </head>
-<body>
-  <!-- HEADER / NAV -->
+
+<body class="theme-galaxy">
   <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">
-        <span class="brand-main">Civic Engagement</span>
-        <span class="brand-sub">Experiment &amp; Lab</span>
+    <div class="header-inner">
+      <a class="brand-link" href="/the-reverie/index.html">
+        <span class="brand-title">The Reverie</span>
+        <span class="brand-sub">Civic Research + Civic Lab</span>
       </a>
-    </div>
 
-    <button class="nav-toggle" aria-label="Toggle navigation">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
-    <!-- Updated navigation: consistent links and ALTIUS entry -->
-    <nav class="main-nav" aria-label="Primary navigation">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="journal-memo.html">Journal Memo</a></li>
-        <li><a href="dissertation.html">Dissertation</a></li>
-        <li><a href="civicengagementproject.html">Civic Engagement Project</a></li>
-        <li><a href="study-details.html">Study Details</a></li>
-        <li><a href="questionnaires.html">Questionnaires</a></li>
-        <li><a href="civic-lab.html" class="active">Civic Lab</a></li>
-        <li><a href="altius.html">ALTIUS Prototype</a></li>
-        <li><a href="venture-overview.html">Venture</a></li>
-        <li><a href="notes.html">Notes &amp; Sandbox</a></li>
-        <li><a href="references.html">References</a></li>
-        <li><a href="team-contact.html">Team &amp; Contact</a></li>
-        <li>
-          <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
-            MSL Site ↗
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <div class="article">
-      <header class="article-header">
-        <span class="eyebrow">Civic Lab · Applied Side of the Experiment</span>
-        <h1>Civic Lab Services, Games &amp; Blueprints</h1>
-        <p class="article-meta">
-          The Civic Lab is where the theory leaves the PDF. It’s a mix of consulting, workshops,
-          and game‑style activities for student governments, clubs, classes, and youth projects
-          that want to actually do democracy—not just talk about it.
-        </p>
-      </header>
-
-      <div class="article-content">
-        <!-- WHO IT'S FOR -->
-        <section>
-          <h2>Who the Civic Lab Is For</h2>
-          <div class="card">
-            <ul>
-              <li>
-                <strong>Student governments &amp; MSL delegations:</strong> Need bylaws that
-                actually work, not just copy‑paste from a random template.
-              </li>
-              <li>
-                <strong>Clubs &amp; campus orgs:</strong> Want meetings that aren’t chaos and
-                participation that isn’t just the same three people.
-              </li>
-              <li>
-                <strong>Educators &amp; staff:</strong> Want plug‑and‑play activities that teach
-                democratic skills without turning every class into a full simulation.
-              </li>
-              <li>
-                <strong>Youth projects &amp; future delegates:</strong> Want missions and games
-                that make civic life feel like something you can actually touch.
-              </li>
-            </ul>
-            <p class="small">
-              All work is <strong>nonpartisan</strong> and focused on democratic skills, structures,
-              and habits—not pushing any particular party line.
-            </p>
-          </div>
-        </section>
-
-        <!-- GAME-STYLE ACTIVITIES -->
-        <section>
-          <h2>Drop‑In Civic Lab Activities (Game‑Style)</h2>
-          <p>
-            These are structured activities you can run in 30–60 minutes. Think “lesson plan,” but
-            with slightly more chaos and a lot more agency.
-          </p>
-
-          <div class="card">
-            <h3>1. Agenda Jenga</h3>
-            <p><strong>Goal:</strong> Learn agenda‑setting and priorities without a three‑hour meeting.</p>
-            <p><strong>You’ll need:</strong> Index cards or sticky notes, a whiteboard or wall.</p>
-            <ol>
-              <li>Everyone writes one real issue on a card (campus, club, community).</li>
-              <li>Cards go on the board. As a group, you can only keep <strong>five</strong>.</li>
-              <li>
-                One person plays “chair” and leads a fast debate: what stays, what gets dropped,
-                and why?
-              </li>
-              <li>Debrief: Who got heard? What issues dropped off first? Why?</li>
-            </ol>
-            <p class="small">
-              <strong>Good for:</strong> Student gov retreats, club officer trainings, youth
-              leadership programs.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>2. Budget Lab: Slice the Pie</h3>
-            <p><strong>Goal:</strong> Practice trade‑offs and coalition‑building.</p>
-            <p><strong>You’ll need:</strong> A fake budget (or your real one), categories, markers.</p>
-            <ol>
-              <li>Give groups a simple “budget pie”: e.g., 100 points to divide among 6 categories.</li>
-              <li>Each group must create a budget and justify it in 2–3 bullet points.</li>
-              <li>Groups present; then a second round happens after hearing others’ arguments.</li>
-              <li>
-                Compare Round 1 vs Round 2: What shifted? Did anyone change their mind? What
-                arguments moved people?
-              </li>
-            </ol>
-            <p class="small">
-              <strong>Good for:</strong> SGA/club funding discussions, civic classes, MSL training.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>3. Parli Pro Speedrun</h3>
-            <p><strong>Goal:</strong> Make parliamentary procedure less terrifying and more like a co‑op game.</p>
-            <p><strong>You’ll need:</strong> A short cheat sheet of motions and a silly sample issue.</p>
-            <ol>
-              <li>Pick a low‑stakes topic (snacks budget, club trip, theme for an event).</li>
-              <li>
-                Assign roles: chair, clerk, timekeeper, 4–6 members. Everyone gets a quick motions
-                cheat sheet.
-              </li>
-              <li>
-                Run a <strong>10–15 minute</strong> mock meeting where the only goal is: use at
-                least 3 different motions correctly (e.g., move to amend, move to table, call the
-                question).
-              </li>
-              <li>Debrief: What felt empowering? What felt confusing or gatekeeping‑ish?</li>
-            </ol>
-            <p class="small">
-              <strong>Good for:</strong> MSL prep, student government training, intro to Robert’s Rules.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>4. Spectacle vs Substance</h3>
-            <p><strong>Goal:</strong> Train students to separate political “show” from real decisions.</p>
-            <p><strong>You’ll need:</strong> A few screenshots or clips of political content (TV, social, campus emails).</p>
-            <ol>
-              <li>Show a clip or read a short excerpt.</li>
-              <li>Ask: “What’s the actual decision here, if any?” Write it down.</li>
-              <li>Ask: “Who decides? Where? When?” Map it onto local/state/national or campus.</li>
-              <li>Brainstorm one concrete action a student could take that relates to the real decision.</li>
-            </ol>
-            <p class="small">
-              <strong>Good for:</strong> Youth workshops, media literacy sessions, first‑year seminars.
-            </p>
-          </div>
-        </section>
-
-        <!-- AI HELPERS -->
-        <section>
-          <h2>AI Helpers for Civic Work (Used Safely)</h2>
-          <div class="card">
-            <p>
-              AI is not a replacement for real civic work, but it can be a surprisingly useful
-              assistant if you tell it exactly what you want and force it to show its sources.
-              The Civic Lab uses AI in a few focused ways:
-            </p>
-
-            <h3>Ask the Assembly (Maryland Legislative Help)</h3>
-            <p>
-              You can use an AI assistant (like ChatGPT) alongside the official Maryland General
-              Assembly resources to get plain‑language explanations. A safe pattern:
-            </p>
-            <ol>
-              <li>
-                Go to the <strong>Maryland General Assembly</strong> website and find the relevant
-                page (e.g., “How a Bill Becomes Law,” rules, committee info).
-              </li>
-              <li>
-                Copy the relevant text or link and paste it into your AI chat with a prompt like:
-                <br />
-                <em>
-                  “Using only this official Maryland General Assembly material, explain in simple
-                  terms how a bill moves from introduction to becoming law. Flag any steps that are
-                  unique to Maryland.”
-                </em>
-              </li>
-              <li>
-                Ask follow‑up questions, but always cross‑check with the official site before using
-                the answer in anything formal.
-              </li>
-            </ol>
-            <p class="small">
-              <strong>Rule:</strong> AI helps you understand; the <em>Assembly</em> is still the
-              authority.
-            </p>
-
-            <h3>Bylaw Builder &amp; Rule Rewrite</h3>
-            <p>
-              For clubs and delegations, AI can help refactor messy documents if you keep it on a
-              tight leash:
-            </p>
-            <ul>
-              <li>Paste your constitution/bylaws into a document.</li>
-              <li>
-                Ask an AI: <em>
-                  “Rewrite this into a clear, student‑friendly bylaws document, but do not change
-                  any powers or voting thresholds. Just clarify and reorganize.”
-                </em>
-              </li>
-              <li>Review the output line by line before adopting anything.</li>
-            </ul>
-
-            <h3>Agenda &amp; Email Draft Assist</h3>
-            <p>
-              You can also use AI to generate sample agendas, recruitment emails, and training
-              outlines. The Lab can help you design the prompts so you get useful drafts instead of
-              generic spam.
-            </p>
-
-            <p class="small">
-              <strong>Note:</strong> A future version of this site may include a dedicated “Civic
-              Lab Assistant” that sits on top of official manuals and this project’s research.
-              For now, the Lab offers guidance on <em>how</em> to use AI well; the tools you use
-              (ChatGPT, etc.) are up to you and your institution’s policies.
-            </p>
-          </div>
-        </section>
-
-        <!-- SERVICE PACKAGES -->
-        <section>
-          <h2>Service Packages &amp; Collaborations</h2>
-
-          <div class="card">
-            <h3>Starter Civic Blueprint Package</h3>
-            <p>
-              Ideal for new student governments, MSL delegations, or youth councils trying to get
-              real structure without losing their soul.
-            </p>
-            <ul>
-              <li>
-                A customized constitution &amp; bylaws template tailored to your campus or club’s
-                needs.
-              </li>
-              <li>
-                Sample agendas, recruitment scripts, and communications to kick‑start engagement.
-              </li>
-              <li>
-                One 60‑minute virtual consultation to review your structure and answer questions.
-              </li>
-              <li>
-                A follow‑up implementation guide with tips on elections, budgeting, and member
-                training.
-              </li>
-            </ul>
-            <p class="small">
-              <em>Pricing:</em> Sliding‑scale, depending on organization size and scope. Reach out
-              to discuss.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Custom Consulting &amp; Workshops</h3>
-            <p>
-              For established organizations or institutions seeking deeper support, the Civic Lab
-              offers tailored services such as:
-            </p>
-            <ul>
-              <li>
-                Facilitated workshops on democratic skills (agenda‑setting, deliberation,
-                consensus‑building, parliamentary procedure).
-              </li>
-              <li>
-                One‑on‑one advising for leaders on strategic planning, engagement initiatives, and
-                “how not to burn out your best people.”
-              </li>
-              <li>
-                Curriculum co‑design for mock legislatures, civic labs, and first‑year civic
-                seminars.
-              </li>
-              <li>
-                Help integrating AI responsibly into civic education (prompt design, guardrails,
-                and source‑checking methods).
-              </li>
-            </ul>
-            <p class="small">
-              <em>Pricing:</em> Custom proposals; designed to be realistic for student org budgets
-              and small institutions.
-            </p>
-          </div>
-        </section>
-
-        <!-- CALL TO ACTION -->
-        <section>
-          <h2>Call to Action: What You Can Do Right Now</h2>
-          <div class="card">
-            <ul>
-              <li>
-                <strong>Student leader?</strong> Pick one activity above (Agenda Jenga, Budget Lab,
-                Parli Pro Speedrun) and run it at your next meeting.
-              </li>
-              <li>
-                <strong>Club or delegation?</strong> Start a shared doc titled
-                <em>“Our Civic Blueprint”</em> and list what’s working, what’s broken, and what you
-                want help with.
-              </li>
-              <li>
-                <strong>Instructor?</strong> Grab one activity and drop it into a 30‑minute block
-                in your syllabus as a live experiment.
-              </li>
-              <li>
-                <strong>Youth group or teacher?</strong> Pair this page with the
-                <a href="civicengagementproject.html">Civic Engagement Project</a> missions to
-                create a mini civic unit.
-              </li>
-            </ul>
-            <p class="small">
-              If you try something and it works (or crashes), that’s data. The Lab is built on
-              those experiments.
-            </p>
-          </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section>
-          <h2>Contact &amp; Next Steps</h2>
-          <p>
-            If you want to bring the Civic Lab into your campus, class, or youth program, you can:
-          </p>
-          <ul>
-            <li>
-              Visit the <a href="team-contact.html">Team &amp; Contact</a> page for a short bio and
-              contact options.
-            </li>
-            <li>
-              Or email directly at:
-              <a href="mailto:consult@nathansanchez.org">consult@nathansanchez.org</a>
-              with your organization name, goals, and timeline.
-            </li>
-          </ul>
-          <p class="small">
-            Information is never shared without permission. Scheduling tools and more formal
-            onboarding are on the roadmap as the project grows.
-          </p>
-        </section>
-      </div>
-    </div>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-main">
-      <div class="footer-about">
-        <h3>About the lab</h3>
-        <p>
-          The Civic Engagement Experiment &amp; Lab is run by a student who splits time
-          between campaigns, the Maryland General Assembly ecosystem, and campus organizing—
-          trying to connect democratic theory, youth engagement, and real‑world practice.
-        </p>
-        <a href="team-contact.html">Team &amp; contact →</a>
-      </div>
-
-      <div class="footer-links">
-        <h3>Quick links</h3>
+      <nav class="main-nav" aria-label="Primary navigation">
         <ul>
-          <li><a href="civic-lab.html">Civic Lab services</a></li>
-          <li><a href="civicengagementproject.html">Youth civic project</a></li>
-          <li><a href="references.html">References &amp; sources</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h3>Partners</h3>
-        <ul>
+          <li><a href="/the-reverie/index.html">Home</a></li>
+          <li><a href="/the-reverie/pages/research/">Research</a></li>
+          <li><a href="/the-reverie/pages/lab/">Civic Lab</a></li>
+          <li><a href="/the-reverie/pages/altius/">ALTIUS</a></li>
+          <li><a href="/the-reverie/pages/venture/">Venture</a></li>
+          <li><a href="/the-reverie/about/index.html">About</a></li>
+          <li><a href="/the-reverie/about/references.html">References</a></li>
           <li>
             <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
-              Maryland Student Legislature @ SMCM ↗
+              MSL Site ↗
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Civic Engagement Experiment &amp; Lab.</p>
+  <main id="top">
+    <section class="hero lab-hero">
+      <div class="wrap">
+        <p class="kicker">Applied side · Modules · Serious games</p>
+        <h1>Civic Lab</h1>
+        <p class="lead">
+          This is where theory leaves the PDF. The Civic Lab builds workshops, activity kits, and game-style experiences
+          for student governments, clubs, classes, and youth programs that want to actually practice democracy—
+          not just argue about it.
+        </p>
+
+        <p class="tagline">
+          Designed to be <strong>nonpartisan</strong>, skills-first, and deployable in <strong>30–60 minutes</strong>.
+        </p>
+
+        <div class="pillrow" aria-label="Lab tags">
+          <span class="pill hot">Action over abstraction</span>
+          <span class="pill">Deliberation</span>
+          <span class="pill">Coalitions</span>
+          <span class="pill">Institution literacy</span>
+          <span class="pill">Student leadership</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="/the-reverie/pages/altius/">Try ALTIUS →</a>
+          <a class="btn" href="/the-reverie/pages/venture/">See Venture track →</a>
+          <a class="link" href="/the-reverie/about/references.html">Sources / references →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 18px;">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Who this is for</h2>
+          <p>Pick your environment. The Lab adapts, but the point stays the same: build democratic skill through practice.</p>
+        </header>
+
+        <div class="grid3">
+          <article class="card" style="padding: 16px;">
+            <h3>Student governments &amp; delegations</h3>
+            <p>Bylaws that work, meetings that don’t melt down, and participation beyond the same three people.</p>
+          </article>
+
+          <article class="card" style="padding: 16px;">
+            <h3>Clubs &amp; campus orgs</h3>
+            <p>Simple governance habits: agenda-setting, fair debate, decisions that feel legitimate.</p>
+          </article>
+
+          <article class="card" style="padding: 16px;">
+            <h3>Educators &amp; youth programs</h3>
+            <p>Drop-in modules that teach civic literacy, media sorting, and institutional pathways—without a full simulation course.</p>
+          </article>
+        </div>
+
+        <p class="mini">
+          Everything here is built to be <strong>replicable</strong>: if it works, you can run it again; if it breaks, we learn.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Drop-in activities (game-style)</h2>
+          <p>These are structured “serious games” you can run in 30–60 minutes. Minimal prep. Maximum signal.</p>
+        </header>
+
+        <div class="lab-grid">
+          <article class="card activity">
+            <h3>1) Agenda Jenga</h3>
+            <p><strong>Goal:</strong> learn agenda-setting + priorities without a three-hour meeting.</p>
+            <p><strong>You’ll need:</strong> index cards or sticky notes; a wall/board.</p>
+            <ol>
+              <li>Everyone writes one real issue on a card (campus, club, community).</li>
+              <li>Cards go up. As a group, you can only keep <strong>five</strong>.</li>
+              <li>One person plays “chair” and runs a fast debate: what stays, what drops, why.</li>
+              <li>Debrief: who got heard, what got cut first, what the power dynamics were.</li>
+            </ol>
+            <p class="small"><strong>Good for:</strong> retreats, officer training, youth leadership programs.</p>
+          </article>
+
+          <article class="card activity">
+            <h3>2) Budget Lab: Slice the Pie</h3>
+            <p><strong>Goal:</strong> practice trade-offs and coalition-building.</p>
+            <p><strong>You’ll need:</strong> a fake budget (or your real one), categories, markers.</p>
+            <ol>
+              <li>Give each group a “pie”: 100 points across 6 categories.</li>
+              <li>Groups allocate + justify in 2–3 bullet points.</li>
+              <li>Present; then run a second round after hearing other arguments.</li>
+              <li>Compare Round 1 vs Round 2: what shifted, and why.</li>
+            </ol>
+            <p class="small"><strong>Good for:</strong> funding debates, civic classes, delegation training.</p>
+          </article>
+
+          <article class="card activity">
+            <h3>3) Parli Pro Speedrun</h3>
+            <p><strong>Goal:</strong> turn parliamentary procedure into a co-op skill, not a gatekeeping ritual.</p>
+            <p><strong>You’ll need:</strong> a tiny motions cheat-sheet + a low-stakes topic.</p>
+            <ol>
+              <li>Pick a harmless agenda item (snacks budget, event theme, trip vote).</li>
+              <li>Assign roles: chair, clerk, timekeeper, 4–6 members.</li>
+              <li>Run a 10–15 min mock meeting: use at least <strong>3 motions</strong> correctly.</li>
+              <li>Debrief: what felt empowering vs confusing, and why.</li>
+            </ol>
+            <p class="small"><strong>Good for:</strong> Robert’s Rules intros, MSL prep, org leadership training.</p>
+          </article>
+
+          <article class="card activity">
+            <h3>4) Spectacle vs Substance</h3>
+            <p><strong>Goal:</strong> teach students to separate political “show” from real decision points.</p>
+            <p><strong>You’ll need:</strong> a few clips/screenshots (TV, social, campus emails).</p>
+            <ol>
+              <li>Show the content.</li>
+              <li>Ask: “What’s the actual decision here?” Write it down.</li>
+              <li>Ask: “Who decides, where, and when?” Map the path.</li>
+              <li>Brainstorm one concrete action tied to the decision.</li>
+            </ol>
+            <p class="small"><strong>Good for:</strong> media literacy sessions, first-year seminars, youth workshops.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>AI helpers for civic work (used safely)</h2>
+          <p>AI isn’t civic engagement. But it can assist—if you force it to be specific, grounded, and source-aware.</p>
+        </header>
+
+        <div class="two-col">
+          <article class="card calloutbox">
+            <h3>What AI is allowed to do here</h3>
+            <ul>
+              <li>Clarify complicated procedures in plain language (then you verify).</li>
+              <li>Draft agendas, emails, workshop outlines (you edit + own it).</li>
+              <li>Refactor messy bylaws <em>without changing powers or thresholds</em> (you review line-by-line).</li>
+              <li>Help you create “next step” plans—especially when people freeze.</li>
+            </ul>
+          </article>
+
+          <article class="card calloutbox">
+            <h3>What AI is not allowed to be</h3>
+            <ul>
+              <li>A substitute for institutional authority (laws, official manuals, policy).</li>
+              <li>A citation machine without verification.</li>
+              <li>A “do my civic work for me” button (outsourcing agency kills the point).</li>
+              <li>A black box that demands trust. If it can’t explain, it doesn’t get to decide.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="card" style="padding: 16px; margin-top: 14px;">
+          <h3 style="margin: 0 0 8px;">ALTIUS (prototype) — the lab’s catalyst tool</h3>
+          <p style="margin: 0 0 10px; color: rgba(238,240,255,0.78);">
+            ALTIUS is designed to push people from “stuck” → “moving.” It’s not a homework engine. It’s a momentum engine.
+            The Lab uses it as an experiment in civic agency: what actually gets people to act.
+          </p>
+          <a class="btn primary" href="/the-reverie/pages/altius/">Open ALTIUS →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>Service packages &amp; collaborations</h2>
+          <p>Structured offers for orgs that want help—designed to be realistic for student budgets.</p>
+        </header>
+
+        <div class="grid3">
+          <article class="card" style="padding: 16px;">
+            <h3>Starter Civic Blueprint</h3>
+            <p>For new orgs that need structure without losing their soul.</p>
+            <ul style="margin: 0; padding-left: 18px; color: rgba(238,240,255,0.86);">
+              <li>Bylaws template tailored to your environment</li>
+              <li>Sample agendas + recruitment scripts</li>
+              <li>1× 60-minute consult + follow-up guide</li>
+            </ul>
+          </article>
+
+          <article class="card" style="padding: 16px;">
+            <h3>Workshops (skills-first)</h3>
+            <p>Hands-on sessions on agenda-setting, deliberation, coalitions, and procedure.</p>
+            <ul style="margin: 0; padding-left: 18px; color: rgba(238,240,255,0.86);">
+              <li>30–90 minute formats</li>
+              <li>Drop-in modules (no full simulation required)</li>
+              <li>Debriefs + take-home templates</li>
+            </ul>
+          </article>
+
+          <article class="card" style="padding: 16px;">
+            <h3>AI for civic education (guardrails)</h3>
+            <p>Prompt design + verification workflow so AI helps without hallucinating policy.</p>
+            <ul style="margin: 0; padding-left: 18px; color: rgba(238,240,255,0.86);">
+              <li>Source-checking patterns</li>
+              <li>Templates for org usage</li>
+              <li>Ethics + governance basics</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="mini">Pricing: sliding-scale / custom depending on scope.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <h2>What you can do right now</h2>
+          <p>Pick one move. Run it. Report back. That’s how the Lab grows.</p>
+        </header>
+
+        <div class="card" style="padding: 16px;">
+          <ul style="margin: 0; padding-left: 18px; color: rgba(238,240,255,0.88);">
+            <li><strong>Student leader?</strong> run Agenda Jenga or Budget Lab at your next meeting.</li>
+            <li><strong>Club or delegation?</strong> start a shared doc: “Our Civic Blueprint”.</li>
+            <li><strong>Instructor?</strong> drop Spectacle vs Substance into a 30-minute block.</li>
+            <li><strong>Try ALTIUS:</strong> use it as momentum tool; compare before vs after.</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn primary" href="/the-reverie/pages/altius/">Run ALTIUS →</a>
+            <a class="btn" href="/the-reverie/about/references.html">See references →</a>
+            <a class="btn" href="/the-reverie/index.html">Back home →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> The Reverie.</span>
+      <span>Practice is the point.</span>
     </div>
   </footer>
-
-  <!-- SIMPLE JS: NAV TOGGLE + YEAR -->
-  <script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    if (navToggle && mainNav) {
-      navToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('nav-open');
-        navToggle.classList.toggle('nav-open');
-      });
-    }
-
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-      yearSpan.textContent = new Date().getFullYear();
-    }
-  </script>
 </body>
 </html>

@@ -1,0 +1,637 @@
+<!-- altius-dissertation.html – Dissertation-format research write-up for ALTIUS (Research folder) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ALTIUS Dissertation – Civic Engagement Experiment &amp; Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Dissertation-format research write-up for ALTIUS: an agency-first AI task engine prototype, its theory, design, milestones, methods, ethics, and evaluation plan."
+  />
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Page-only polish (safe, minimal) */
+    .meta-grid { display: grid; gap: 1rem; grid-template-columns: 1.2fr 0.8fr; }
+    @media (max-width: 900px) { .meta-grid { grid-template-columns: 1fr; } }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .25rem .7rem; border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.10);
+      opacity: .95;
+      font-size: .85rem;
+    }
+
+    .callout {
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(8px);
+    }
+
+    .callout-title { font-weight: 700; margin: 0 0 .35rem; }
+    .callout p { margin: .4rem 0; }
+
+    .two-col { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+    .timeline { list-style: none; padding: 0; margin: 0; }
+    .timeline li {
+      margin: 0 0 .75rem;
+      padding: .85rem 1rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .t-title { font-weight: 700; margin: 0 0 .35rem; }
+    .t-meta { opacity: .8; font-size: .9rem; margin: 0 0 .25rem; }
+    .t-body { margin: 0; opacity: .95; }
+
+    .kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .9rem;
+      padding: .1rem .45rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.30);
+      white-space: nowrap;
+    }
+
+    .toc {
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .toc h3 { margin: 0 0 .5rem; }
+    .toc ul { margin: .35rem 0 0 1.1rem; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    .footnote { font-size: .9rem; opacity: .85; }
+    .hr { height: 1px; background: rgba(255,255,255,.10); border: 0; margin: 1.25rem 0; }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / NAV (Research folder) -->
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="brand-link">
+        <span class="brand-main">Civic Engagement</span>
+        <span class="brand-sub">Experiment &amp; Lab</span>
+      </a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <ul>
+        <li><a href="index.html">Research Home</a></li>
+        <li><a href="research-overview.html">Research Overview</a></li>
+        <li><a href="journal-memo.html">Journal Memo</a></li>
+        <li><a href="dissertation.html">Dissertation</a></li>
+        <li><a href="study-details.html">Study Details</a></li>
+
+        <!-- Prototype vs research split -->
+        <li><a href="altius.html">ALTIUS Prototype</a></li>
+        <li><a href="altius-dissertation.html" class="active">ALTIUS Dissertation</a></li>
+
+        <li><a href="../lab/">Lab</a></li>
+        <li><a href="../index.html">Main Site</a></li>
+
+        <li>
+          <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
+            MSL Site ↗
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="article">
+      <header class="article-header">
+        <span class="eyebrow">ALTIUS · Dissertation-format research write-up</span>
+        <h1>ALTIUS: An Agency-First Task Engine Prototype for Civic + Academic Follow-Through</h1>
+
+        <div class="meta-grid">
+          <div>
+            <p class="article-meta">
+              Working research write-up · Nathan Sanchez · St. Mary’s College of Maryland · 2026 (draft track)
+            </p>
+            <p class="article-meta">
+              This document formalizes ALTIUS as a research object: the theory of change, design constraints,
+              milestones achieved, and an evaluation plan that can run in parallel with the dissertation-scale
+              campus engagement study.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.75rem;">
+              <span class="pill">Prototype page: <a href="altius.html">altius.html</a></span>
+              <span class="pill">Method tie-in: <a href="study-details.html">study-details.html</a></span>
+              <span class="pill">Lab integration: <a href="../lab/">/lab/</a></span>
+            </div>
+          </div>
+
+          <aside class="toc" aria-label="Table of contents">
+            <h3>Contents</h3>
+            <ul>
+              <li><a href="#abstract">Abstract</a></li>
+              <li><a href="#problem">1. The Problem</a></li>
+              <li><a href="#theory">2. Theory of Change</a></li>
+              <li><a href="#design">3. System Design</a></li>
+              <li><a href="#milestones">4. Milestones Achieved (to date)</a></li>
+              <li><a href="#methods">5. Methods: Evaluation &amp; Study Plan</a></li>
+              <li><a href="#measures">6. Measures &amp; Outcomes</a></li>
+              <li><a href="#ethics">7. Ethics &amp; Guardrails</a></li>
+              <li><a href="#limitations">8. Limits &amp; Threats</a></li>
+              <li><a href="#roadmap">9. Roadmap</a></li>
+              <li><a href="#appendix">Appendix: Prompt Protocols</a></li>
+            </ul>
+          </aside>
+        </div>
+      </header>
+
+      <div class="article-content">
+        <!-- ABSTRACT -->
+        <section id="abstract">
+          <h2>Abstract</h2>
+          <div class="callout">
+            <p>
+              ALTIUS is an agency-first AI task engine prototype designed to reduce inertia and convert intent into
+              follow-through. Unlike “answer machines,” ALTIUS is framed as a structured co-agent that prioritizes
+              user ownership, next-step clarity, and ethical constraints (nonpartisan, non-therapeutic, data-minimal).
+            </p>
+            <p>
+              This write-up formalizes ALTIUS as a parallel dissertation thread: (1) a civic learning tool, and (2) a
+              human–AI interaction study that can generate anonymized process measures of task initiation and completion.
+            </p>
+            <p class="footnote">
+              Status: prototype exists as a public page; model behavior is not assumed to run locally. “AI” can be
+              implemented via external APIs or a future local model, but research framing and guardrails apply either way.
+            </p>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 1. PROBLEM -->
+        <section id="problem">
+          <h2>1. The Problem: Civic Concern Without Civic Follow-Through</h2>
+          <p>
+            Many students experience civic and academic life as a constant stream of high-level obligations:
+            “I should vote,” “I should show up,” “I should write the paper,” “I should email the committee.”
+            The failure mode is often not ignorance. It is friction: overload, ambiguity, social risk, and the
+            psychology of avoidance.
+          </p>
+          <p>
+            The practical result is a predictable cycle: the student understands what matters, but stalls at the first
+            step—then shame compounds the stall. This is relevant not only to grades but to democracy: sustained civic
+            engagement depends on repeatable habits of initiation, coordination, and follow-through.
+          </p>
+
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-title">Design target</p>
+              <p>
+                Make the “start” moment smaller, clearer, and less socially/psychologically costly.
+              </p>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Non-goal</p>
+              <p>
+                Replace the student’s thinking or decision-making. ALTIUS is not a shortcut for agency; it is a scaffold.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 2. THEORY -->
+        <section id="theory">
+          <h2>2. Theory of Change: Agency as a Repeatable Loop</h2>
+          <p>
+            ALTIUS is built around an operational definition of agency: the capacity to reliably translate intention into
+            action under real constraints (time, uncertainty, anxiety, competing demands).
+          </p>
+          <p>
+            The intervention is not “motivation.” It is structure: a short interaction loop that forces clarity,
+            decomposes work, anchors a minimal next step, and then iterates through completion.
+          </p>
+
+          <div class="callout">
+            <p class="callout-title">The ALTIUS loop (core protocol)</p>
+            <ol>
+              <li><strong>Clarify:</strong> Name the avoided task and the real deliverable.</li>
+              <li><strong>Decompose:</strong> Split into atomic steps; separate decision work from mechanical work.</li>
+              <li><strong>Anchor:</strong> Identify the smallest non-zero action that can be done now.</li>
+              <li><strong>Execute &amp; Reflect:</strong> Do it, report completion, adjust plan, repeat.</li>
+            </ol>
+            <p class="footnote">
+              The key claim is that most “I can’t” moments are actually “I can’t see the next step without pain.”
+            </p>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 3. DESIGN -->
+        <section id="design">
+          <h2>3. System Design: Constraints, Components, and Interfaces</h2>
+
+          <h3>3.1 Design constraints (hard rules)</h3>
+          <ul>
+            <li><strong>Agency-first:</strong> the user chooses goals; the system scaffolds execution.</li>
+            <li><strong>Nonpartisan:</strong> no recommendation toward any party or candidate outcomes.</li>
+            <li><strong>Non-therapeutic:</strong> not a mental-health tool; refer out if crisis emerges.</li>
+            <li><strong>Data minimization:</strong> if logs ever exist, default to anonymized aggregates.</li>
+            <li><strong>Transparency:</strong> users must know what ALTIUS is and is not.</li>
+          </ul>
+
+          <h3>3.2 Components (conceptual architecture)</h3>
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-title">Front-end interface (current)</p>
+              <p>
+                A public-facing prototype page that communicates purpose, tone, and the interaction loop. This is the
+                “social contract” layer: what users should expect, and how to use it.
+              </p>
+              <p class="footnote">
+                Link: <a href="altius.html">altius.html</a>
+              </p>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Task engine logic (research object)</p>
+              <p>
+                A prompt protocol that reliably produces: next-step plans, time-boxed actions, and structured reflection.
+                This can be implemented with an external LLM API or a future local model.
+              </p>
+              <p class="footnote">
+                The model is the engine; the protocol is the steering wheel.
+              </p>
+            </div>
+          </div>
+
+          <h3>3.3 Implementation options (non-committal, research-safe)</h3>
+          <ul>
+            <li>
+              <strong>API-based LLM (recommended early):</strong> fastest to integrate and test the protocol with real users.
+              Research control comes from prompts + guardrails + measurement design.
+            </li>
+            <li>
+              <strong>Local model (future track):</strong> more autonomy and customization, but significantly more engineering,
+              compute, and evaluation overhead. Useful only after protocol and evaluation are stable.
+            </li>
+          </ul>
+
+          <div class="callout">
+            <p class="callout-title">Important note on “training our own”</p>
+            <p>
+              Training a new LLM from scratch is usually unrealistic for a student project. If you ever go local, the sane path is:
+              use an existing open model + carefully scoped fine-tuning (or retrieval) + strict evaluation. But the dissertation value
+              doesn’t depend on owning the model — it depends on the theory, protocol, and measurable outcomes.
+            </p>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 4. MILESTONES -->
+        <section id="milestones">
+          <h2>4. Milestones Achieved (to date)</h2>
+          <p>
+            This section captures what has already been built and formalized. Where something is still in flux, it is marked
+            as a placeholder so it can be updated without rewriting the research structure.
+          </p>
+
+          <ul class="timeline">
+            <li>
+              <p class="t-title">Milestone A — Prototype deployed as a public-facing page</p>
+              <p class="t-meta">Status: achieved · Artifact: <a href="altius.html">altius.html</a></p>
+              <p class="t-body">
+                The ALTIUS prototype exists as a navigable page that explains the purpose, tone, and the agency-first loop.
+                This establishes a usable “front door” for users and a stable artifact for research referencing.
+              </p>
+            </li>
+
+            <li>
+              <p class="t-title">Milestone B — Formal theory-of-change written into the project</p>
+              <p class="t-meta">Status: achieved · Artifact: <a href="study-details.html">study-details.html</a> (ALTIUS tab)</p>
+              <p class="t-body">
+                ALTIUS was integrated into the broader research ecosystem as a substudy: task initiation and follow-through as
+                measurable outcomes, with ethics and guardrails aligned to the campus study.
+              </p>
+            </li>
+
+            <li>
+              <p class="t-title">Milestone C — Protocol stabilized (core loop + constraints)</p>
+              <p class="t-meta">Status: achieved (conceptually) · Artifact: Appendix prompt protocols</p>
+              <p class="t-body">
+                The non-negotiables are defined: agency-first, nonpartisan, non-therapeutic scope, data minimization,
+                and transparent use. This turns “cool AI idea” into a defensible intervention design.
+              </p>
+            </li>
+
+            <li>
+              <p class="t-title">Milestone D — Research-track separation created (prototype vs dissertation format)</p>
+              <p class="t-meta">Status: achieved · Artifact: this page (<span class="kbd">altius-dissertation.html</span>)</p>
+              <p class="t-body">
+                The site now treats ALTIUS as two things at once: a prototype interface and a formal research thread that can be
+                presented alongside the main dissertation project without mixing genres.
+              </p>
+            </li>
+
+            <li>
+              <p class="t-title">Milestone E — Model integration (pending)</p>
+              <p class="t-meta">Status: not assumed · Next step: choose API-based implementation or keep as concept prototype</p>
+              <p class="t-body">
+                If “the model isn’t working,” that is an implementation issue, not a research collapse. The dissertation thread can
+                proceed with protocol + evaluation plan, and the model layer can be swapped later.
+              </p>
+            </li>
+          </ul>
+
+          <p class="footnote">
+            Replace the milestone labels with your real internal wording if you want (and add dates once you’re ready).
+          </p>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 5. METHODS -->
+        <section id="methods">
+          <h2>5. Methods: Evaluation &amp; Study Plan (Parallel Dissertation Track)</h2>
+          <p>
+            ALTIUS can be evaluated as a minimal-risk human–AI interaction intervention focused on task follow-through.
+            The cleanest design is a pilot on campus with a short time window (e.g., 2–3 weeks), then a scale plan.
+          </p>
+
+          <h3>5.1 Research questions</h3>
+          <ul>
+            <li><strong>RQ1:</strong> Does ALTIUS increase task initiation rates for high-friction civic/academic tasks?</li>
+            <li><strong>RQ2:</strong> Does it increase task completion (or meaningful partial completion) within a set time window?</li>
+            <li><strong>RQ3:</strong> Which protocol features correlate most strongly with follow-through (anchoring, time-boxing, reflection)?</li>
+            <li><strong>RQ4:</strong> Does it help “cross-pressured” or politically misaligned students engage without social risk spirals?</li>
+          </ul>
+
+          <h3>5.2 Study designs (pick one, or sequence them)</h3>
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-title">Design 1 — Single-group pre/post pilot (fastest)</p>
+              <ul>
+                <li>Recruit volunteers.</li>
+                <li>Baseline: self-reported avoidance + current habits.</li>
+                <li>Intervention: ALTIUS protocol for 1–2 tasks.</li>
+                <li>Post: initiation/completion + user-perceived agency.</li>
+              </ul>
+              <p class="footnote">Pros: speed. Cons: weaker causal inference.</p>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Design 2 — Randomized encouragement (stronger)</p>
+              <ul>
+                <li>Recruit participants into a broader study.</li>
+                <li>Randomly encourage ALTIUS use (with standardized onboarding).</li>
+                <li>Compare outcomes between encouraged vs not-encouraged.</li>
+              </ul>
+              <p class="footnote">Pros: more causal leverage without heavy manipulation.</p>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:1rem;">
+            <p class="callout-title">Integration with the main dissertation study</p>
+            <p>
+              ALTIUS can be a substudy nested inside the campus framing/norms experiment:
+              after the survey, students who opt in can use ALTIUS to complete a civic micro-task
+              (e.g., drafting one email, signing up for one event, planning one meeting).
+              This links framing effects to real follow-through behavior.
+            </p>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 6. MEASURES -->
+        <section id="measures">
+          <h2>6. Measures &amp; Outcomes</h2>
+          <p>
+            Measures should be boring, explicit, and hard to fake. The point is not “did they like the vibe,”
+            but “did they move.”
+          </p>
+
+          <h3>6.1 Primary behavioral outcomes</h3>
+          <ul>
+            <li><strong>Initiation:</strong> did the participant start within 24 hours? (yes/no)</li>
+            <li><strong>Completion:</strong> completed within study window? (yes/no)</li>
+            <li><strong>Time-to-start:</strong> hours between intention and first action</li>
+            <li><strong>Next-step adherence:</strong> did they follow the anchored step (yes/no)</li>
+          </ul>
+
+          <h3>6.2 Secondary outcomes</h3>
+          <ul>
+            <li><strong>Self-efficacy:</strong> “I can influence outcomes here” (campus-specific)</li>
+            <li><strong>Agency perception:</strong> “I’m steering; the tool is supporting”</li>
+            <li><strong>Over-reliance risk:</strong> indicators of deferring decisions to the system</li>
+          </ul>
+
+          <h3>6.3 Minimal data principle</h3>
+          <p class="footnote">
+            If you collect any logs, store only what you need (task category + timestamp + completion state), and avoid
+            personal narrative content. If you don’t need logs, don’t create them.
+          </p>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 7. ETHICS -->
+        <section id="ethics">
+          <h2>7. Ethics &amp; Guardrails</h2>
+          <p>
+            ALTIUS is designed to be low-risk by design. Still, the ethics need to be explicit, because AI tools can
+            accidentally become manipulative, partisan, or dependency-forming if left unchecked.
+          </p>
+
+          <div class="callout">
+            <p class="callout-title">Guardrails (non-negotiable)</p>
+            <ul>
+              <li><strong>Agency-first language:</strong> “You choose; I help you execute.”</li>
+              <li><strong>No partisan outcomes:</strong> no candidate/party advocacy.</li>
+              <li><strong>No therapy role:</strong> if crisis signals emerge, refer to campus/pro services.</li>
+              <li><strong>Consent clarity:</strong> what data is collected (if any), and why.</li>
+              <li><strong>Opt-out always:</strong> participation optional, no penalty.</li>
+            </ul>
+          </div>
+
+          <p class="footnote">
+            Any campus deployment should be reviewed under IRB rules (or equivalent) before data collection.
+          </p>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 8. LIMITATIONS -->
+        <section id="limitations">
+          <h2>8. Limits, Threats, and What This Does Not Prove</h2>
+          <ul>
+            <li><strong>External validity:</strong> campus context may not generalize without replication.</li>
+            <li><strong>Selection:</strong> volunteers may already be more motivated than average.</li>
+            <li><strong>Novelty effects:</strong> early results may be inflated by “new tool” excitement.</li>
+            <li><strong>Measurement:</strong> self-reports are fragile; prioritize behavioral outcomes.</li>
+            <li><strong>Model dependence:</strong> effects may vary by model capability; protocol should remain stable.</li>
+          </ul>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- 9. ROADMAP -->
+        <section id="roadmap">
+          <h2>9. Roadmap</h2>
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-title">Near-term (pilot-ready)</p>
+              <ul>
+                <li>Finalize ALTIUS protocol prompts (Appendix).</li>
+                <li>Choose a pilot design (pre/post or randomized encouragement).</li>
+                <li>Define 2–3 “task categories” to study (academic, org leadership, civic action).</li>
+                <li>Write consent/debrief text.</li>
+              </ul>
+            </div>
+            <div class="callout">
+              <p class="callout-title">Mid-term (scale)</p>
+              <ul>
+                <li>Integrate as optional follow-up to the main campus study.</li>
+                <li>Add structured outcome capture (initiation/completion timestamps).</li>
+                <li>Replicate across multiple org contexts (clubs, student gov, civic programs).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout" style="margin-top:1rem;">
+            <p class="callout-title">If you insist on “local model” later</p>
+            <p>
+              Do it only after the protocol + evaluation plan are stable. Otherwise you’ll burn months on infrastructure
+              before you even know what you’re measuring.
+            </p>
+          </div>
+        </section>
+
+        <hr class="hr" />
+
+        <!-- APPENDIX -->
+        <section id="appendix">
+          <h2>Appendix: Prompt Protocols (Copy/Paste Templates)</h2>
+          <p>
+            These are designed to be model-agnostic. You can run them manually (in a chat) or embed them later.
+            The important thing is consistency: same structure across participants.
+          </p>
+
+          <h3>A1. Intake prompt (Clarify)</h3>
+          <pre><code>ALTIUS INTAKE — RULES
+You are a task engine. You do not make decisions for me.
+You do not write full assignments that should be mine.
+You produce: clarity, a plan, and the smallest next action.
+
+TASK:
+- What task am I avoiding?
+- What's the real deliverable (file/email/meeting outcome)?
+- What's the deadline (or "none")?
+- Why is this hard (1–2 sentences)?
+- What resources do I already have (notes, links, docs)?</code></pre>
+
+          <h3>A2. Decomposition prompt (Decompose + Anchor)</h3>
+          <pre><code>DECOMPOSE THIS TASK
+1) List atomic steps (10–15 max).
+2) Label each as DECISION work or MECHANICAL work.
+3) Identify the smallest non-zero action I can do in 5 minutes.
+4) Give me a 25-minute sprint plan (3–5 steps only).
+5) End by asking me to choose: 5 minutes or 25 minutes.</code></pre>
+
+          <h3>A3. Execution + reflection prompt (Execute &amp; Reflect)</h3>
+          <pre><code>EXECUTION CHECK
+Ask me what I completed.
+If I didn't do it, diagnose friction (time/clarity/anxiety/boredom/overwhelm).
+Then:
+- shrink the next step,
+- time-box it,
+- and have me commit to a single action I can finish now.</code></pre>
+
+          <h3>A4. Civic-safe mode (nonpartisan, action-forward)</h3>
+          <pre><code>CIVIC SAFE MODE
+When the task is civic or political:
+- stay nonpartisan,
+- focus on democratic skills (participation, deliberation, outreach),
+- prefer local/institutional actions (campus/community),
+- and require me to choose the action.</code></pre>
+
+          <p class="footnote">
+            If you want, we can add an Appendix B with consent/debrief boilerplate specifically for IRB-style formatting.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-about">
+        <h3>About the lab</h3>
+        <p>
+          The Civic Engagement Experiment &amp; Lab connects democratic theory, youth engagement,
+          and real-world practice through research and prototypes—including ALTIUS as an agency-first task engine.
+        </p>
+        <a href="../lab/">Lab →</a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="altius.html">ALTIUS prototype</a></li>
+          <li><a href="study-details.html">Study details</a></li>
+          <li><a href="dissertation.html">Main dissertation draft</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h3>Partners</h3>
+        <ul>
+          <li>
+            <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank" rel="noopener">
+              Maryland Student Legislature @ SMCM ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Civic Engagement Experiment &amp; Lab.</p>
+    </div>
+  </footer>
+
+  <!-- JS: NAV TOGGLE + YEAR -->
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (navToggle && mainNav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('nav-open');
+        navToggle.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

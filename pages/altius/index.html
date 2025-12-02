@@ -109,6 +109,34 @@
       background: rgba(245, 197, 66, 0.08);
     }
 
+    /* NEW: link pills (prototype → research / method) */
+    .link-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 2px; }
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 197, 66, 0.28);
+      background: rgba(245, 197, 66, 0.06);
+      color: var(--accent-strong);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 0.08s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+    .link-pill:hover {
+      transform: translateY(-1px);
+      border-color: rgba(245, 197, 66, 0.5);
+      background: rgba(245, 197, 66, 0.10);
+      text-decoration: none;
+    }
+    .link-pill.secondary {
+      border-color: rgba(160, 164, 184, 0.35);
+      background: rgba(255,255,255,0.02);
+      color: var(--text-soft);
+    }
+
     /* Avatar card */
     .altius-avatar {
       display: grid;
@@ -316,6 +344,14 @@
             </div>
           </div>
 
+          <!-- NEW: Prototype → Research links -->
+          <div class="link-row" aria-label="ALTIUS links">
+            <a class="link-pill" href="altius-dissertation.html">📄 Read the dissertation-format write-up →</a>
+            <a class="link-pill secondary" href="study-details.html">🧪 Study details (methods) →</a>
+          </div>
+
+          <div class="divider" style="margin-top:14px;"></div>
+
           <h1 class="altius-title"><span class="title-pill"></span> How this works</h1>
           <p class="subtitle">
             This is a public-facing shell of <strong>ALTIUS</strong> inside <strong>The Reverie</strong>.
@@ -351,8 +387,10 @@
             <span class="pill">No hand-holding</span>
           </div>
 
+          <!-- UPDATED: safer research notice (does not falsely imply logging) -->
           <div class="note" style="margin-top: 16px;">
-            <strong>Research notice:</strong> This is a prototype. Inputs may be stored/analyzed in anonymized form.
+            <strong>Research notice:</strong> Prototype only. This page does <em>not</em> log your messages by default.
+            If logging is ever added for research, it will be opt-in, minimal, and anonymized.
             <br /><br />
             <strong>Developer note:</strong> Wire a model endpoint by editing <code class="inline">sendToModel()</code>.
           </div>

@@ -1,1 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Research — The Reverie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Research hub for The Reverie: dissertation thread, journal memo, study details, questionnaires, and research planning."
+  />
 
+  <!-- Shared theme -->
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+
+  <!-- Shared behavior: header/footer injection, nav toggle, year -->
+  <script src="../../assets/js/site.js" defer></script>
+
+  <style>
+    .page-hero { padding: 48px 0 18px; }
+    .crumbs { margin-top: 10px; color: rgba(238,240,255,0.75); font-size: 0.95rem; }
+    .crumbs a { color: rgba(255,221,107,0.95); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px) { .hub-grid { grid-template-columns: 1fr; } }
+
+    .stack { display: grid; gap: 12px; }
+    .card h3 { margin-top: 2px; }
+    .subtle { color: rgba(238,240,255,0.78); }
+
+    .list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: rgba(238,240,255,0.88);
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+      margin: 10px 0;
+    }
+    .list a:hover {
+      border-color: rgba(245,197,66,0.55);
+      background: rgba(245,197,66,0.10);
+      color: rgba(255,221,107,0.98);
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: rgba(238,240,255,0.70);
+      white-space: nowrap;
+      align-self: flex-start;
+      padding-top: 2px;
+    }
+
+    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  </style>
+</head>
+
+<body class="theme-galaxy">
+  <!-- Shared header injected by site.js -->
+  <div data-include="header"></div>
+
+  <main id="top">
+    <section class="hero page-hero">
+      <div class="wrap">
+        <p class="kicker">Research hub</p>
+        <h1>Research</h1>
+        <p class="lead">
+          Dissertation-scale thread, memos, study design, and instruments. This is the academic spine of The Reverie.
+        </p>
+
+        <p class="crumbs">
+          <a href="../../index.html">Home</a> / Research
+        </p>
+
+        <div class="actions-row" aria-label="Primary research actions">
+          <a class="btn primary" href="dissertation.html">Dissertation page</a>
+          <a class="btn" href="journal-memo.html">Journal memo</a>
+          <a class="btn" href="../lab/">Civic Lab</a>
+          <a class="btn" href="../altius/">ALTIUS</a>
+          <a class="btn" href="../../about/references.html">References</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap hub-grid">
+        <!-- Left: Primary cards -->
+        <div class="stack">
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Core track</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The main research objects you’ll cite, revise, and expand over time.
+            </p>
+
+            <div class="list" style="margin-top: 12px;" aria-label="Research modules">
+              <a href="dissertation.html" aria-label="Open Dissertation thread">
+                <span>
+                  <strong>Dissertation thread</strong><br>
+                  <span class="subtle">Working draft + scaling plan</span>
+                </span>
+                <span class="tag">Long-form</span>
+              </a>
+
+              <a href="journal-memo.html" aria-label="Open Journal memo">
+                <span>
+                  <strong>Journal memo</strong><br>
+                  <span class="subtle">Formal memo + proposal framing</span>
+                </span>
+                <span class="tag">Memo</span>
+              </a>
+
+              <a href="study-details.html" aria-label="Open Study details">
+                <span>
+                  <strong>Study details</strong><br>
+                  <span class="subtle">Design, ethics language, data plan</span>
+                </span>
+                <span class="tag">Methods</span>
+              </a>
+
+              <a href="questionnaires.html" aria-label="Open Questionnaires">
+                <span>
+                  <strong>Questionnaires</strong><br>
+                  <span class="subtle">Instruments and survey items</span>
+                </span>
+                <span class="tag">Instruments</span>
+              </a>
+
+              <a href="research-overview.html" aria-label="Open Research overview">
+                <span>
+                  <strong>Research overview</strong><br>
+                  <span class="subtle">High-level map of the research program</span>
+                </span>
+                <span class="tag">Overview</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">How this connects</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              Research creates claims. The Civic Lab tests what survives contact with reality. ALTIUS is the
+              agency/behavior prototype that sits between.
+            </p>
+            <div class="actions-row" aria-label="Connection links">
+              <a class="btn" href="../lab/">Go to Civic Lab</a>
+              <a class="btn" href="../altius/">Go to ALTIUS</a>
+              <a class="btn" href="../../about/references.html">Citations / References</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Right: Quick links / notes -->
+        <aside class="card" style="padding: 18px;">
+          <h2 style="margin:0;">Working notes</h2>
+          <p class="subtle" style="margin-top: 8px;">
+            This hub is intentionally practical: each page is a “module” you can revise without breaking the site.
+          </p>
+
+          <div class="card" style="margin-top: 12px; padding: 14px;">
+            <p class="subtle" style="margin:0;">
+              If a page exists but is still in the old template, we’ll refactor it to:
+              <br><strong>site.css + site.js + injected header/footer</strong>.
+            </p>
+          </div>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../../index.html">Back home</a>
+            <a class="btn small" href="#top">Top</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer injected by site.js -->
+  <div data-include="footer"></div>
+</body>
+</html>

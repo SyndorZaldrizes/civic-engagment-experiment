@@ -1,45 +1,230 @@
-<!-- venture-overview.html – New business venture page 1 (placeholder content) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Venture Overview – Civic Engagement Experiment</title>
+  <title>Venture — The Reverie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-        content="Overview of WIP business venture related to the Civic Engagement Experiment – mission, vision, and concept." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta
+    name="description"
+    content="Venture overview: a WIP business thread connected to The Reverie—mission, vision, concept, and ethical guardrails."
+  />
+
+  <!-- Shared theme -->
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <!-- Shared behavior -->
+  <script src="../../assets/js/site.js" defer></script>
+
+  <style>
+    .page-hero { padding: 48px 0 18px; }
+    .crumbs { margin-top: 10px; color: rgba(238,240,255,0.75); font-size: 0.95rem; }
+    .crumbs a { color: rgba(255,221,107,0.95); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px) { .hub-grid { grid-template-columns: 1fr; } }
+
+    .subtle { color: rgba(238,240,255,0.78); }
+    .stack { display: grid; gap: 12px; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+      color: rgba(238,240,255,0.88);
+      white-space: nowrap;
+    }
+
+    .pill strong { color: rgba(255,221,107,0.95); font-weight: 700; }
+
+    .list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: rgba(238,240,255,0.88);
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+      margin: 10px 0;
+    }
+    .list a:hover {
+      border-color: rgba(245,197,66,0.55);
+      background: rgba(245,197,66,0.10);
+      color: rgba(255,221,107,0.98);
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: rgba(238,240,255,0.70);
+      white-space: nowrap;
+    }
+
+    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
+    .mini { font-size: 0.92rem; line-height: 1.55; }
+    .callout {
+      border-radius: 14px;
+      border: 1px solid rgba(245,197,66,0.22);
+      background: rgba(245,197,66,0.08);
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+
+    .danger-note {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 77, 77, 0.25);
+      background: rgba(255, 77, 77, 0.06);
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+  </style>
 </head>
-<body class="venture-page">
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <h1>Civic Engagement</h1>
-        <p>Experiment &amp; Lab</p>
-      </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="journal-memo.html">Journal Memo</a>
-        <a href="dissertation.html">Dissertation</a>
-        <a href="civic-engagement-project.html">Civic Engagement Project</a>
-        <a href="notes.html">Notes &amp; Sandbox</a>
-        <a href="questionnaires.html">Questionnaires</a>
-        <a href="references.html">References</a>
-        <a href="venture-overview.html">Venture Overview</a>
-        <a href="product-prototype.html">Product Prototype</a>
-        <a href="market-research.html">Market &amp; Research</a>
-        <a href="team-contact.html">Team &amp; Contact</a>
-        <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank">MSL Site</a>
-      </nav>
-    </aside>
-    <main class="content">
-      <section>
-        <h2>Venture Overview</h2>
-        <p>
-          (This section will introduce my work-in-progress business venture. It will outline the mission, vision, 
-          and the problem we aim to solve at the intersection of civic engagement and social impact. Content to be added.)
+
+<body class="theme-galaxy">
+  <!-- Shared header injected by site.js -->
+  <div data-include="header"></div>
+
+  <main id="top">
+    <section class="hero page-hero">
+      <div class="wrap">
+        <p class="kicker">Venture thread</p>
+        <h1>Venture</h1>
+        <p class="lead">
+          A practical, WIP build: tools and services that help people move from civic concern → civic action,
+          without turning politics into a dopamine casino.
         </p>
-      </section>
-    </main>
-  </div>
+
+        <p class="crumbs">
+          <a href="../../index.html">Home</a> / Venture
+        </p>
+
+        <div class="actions-row">
+          <a class="btn primary" href="venture-overview.html">Overview</a>
+          <a class="btn" href="../research/">Research</a>
+          <a class="btn" href="../lab/">Civic Lab</a>
+          <a class="btn" href="../altius/">ALTIUS</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill"><strong>Mode:</strong> Prototype</span>
+          <span class="pill"><strong>Focus:</strong> Civic + agency tooling</span>
+          <span class="pill"><strong>Constraint:</strong> Nonpartisan by design</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap hub-grid">
+        <!-- Left: main content -->
+        <div class="stack">
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">What this venture is</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The Venture track is the “build something real” sibling of the research program.
+              Research produces claims; Venture produces tools, workflows, and services that can survive real constraints.
+            </p>
+
+            <div class="callout">
+              <p class="mini" style="margin:0;">
+                <strong>One-line mission:</strong> Make civic participation feel doable again by reducing friction,
+                clarifying choices, and creating nonpartisan pathways from awareness → action.
+              </p>
+            </div>
+
+            <h3 style="margin:14px 0 6px;">The problem</h3>
+            <p class="mini subtle" style="margin:0;">
+              Many people want to engage but bounce off the same walls: confusion about processes, social intimidation,
+              polarization fatigue, and a constant sense that “it won’t matter.” The venture is built to attack those walls
+              with practical systems, not speeches.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Core offerings (WIP)</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              These are intentionally modular so you can pilot them on campus before scaling.
+            </p>
+
+            <div class="list" style="margin-top: 12px;">
+              <a href="../lab/">
+                <span><strong>Civic Lab services</strong><br><span class="subtle">Workshops, playbooks, and collaborative builds</span></span>
+                <span class="tag">Services</span>
+              </a>
+
+              <a href="../altius/">
+                <span><strong>ALTIUS (agency prototype)</strong><br><span class="subtle">Task engine: small steps, real follow-through</span></span>
+                <span class="tag">Prototype</span>
+              </a>
+
+              <a href="../research/">
+                <span><strong>Evidence spine</strong><br><span class="subtle">Methods, instruments, and ethics language</span></span>
+                <span class="tag">Research</span>
+              </a>
+            </div>
+
+            <div class="danger-note">
+              <p class="mini" style="margin:0;">
+                <strong>Guardrail:</strong> no partisan targeting, no persuasion-for-hire, no dark patterns.
+                If it can’t be defended ethically in a methods appendix, it doesn’t ship.
+              </p>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Next milestones</h2>
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li>Define “pilot package” for one campus partner (club, class, office).</li>
+              <li>Finalize a simple intake form + consent language for any data collection.</li>
+              <li>Ship one “minimum lovable” workshop + one tool workflow (ALTIUS loop + templates).</li>
+              <li>Document outcomes as case notes, not hype.</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Right: sidebar -->
+        <aside class="card" style="padding: 18px;">
+          <h2 style="margin:0;">Quick links</h2>
+          <p class="subtle" style="margin-top: 8px;">
+            Keep it cohesive: Venture should link back to Research (claims) and Lab (deployment).
+          </p>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../research/">Research hub</a>
+            <a class="btn small" href="../lab/">Civic Lab</a>
+            <a class="btn small" href="../altius/">ALTIUS</a>
+            <a class="btn small" href="../../about/references.html">References</a>
+          </div>
+
+          <div class="card" style="margin-top: 12px; padding: 14px;">
+            <p class="subtle" style="margin:0;">
+              <strong>Note:</strong> When we build the next Venture pages (Product Prototype, Market Research),
+              we should migrate them to this same layout so all nav/active-link logic stays consistent.
+            </p>
+          </div>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../../index.html">Back home</a>
+            <a class="btn small" href="#top">Top</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer injected by site.js -->
+  <div data-include="footer"></div>
 </body>
 </html>

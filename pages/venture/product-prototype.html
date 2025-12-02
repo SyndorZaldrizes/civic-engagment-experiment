@@ -1,115 +1,268 @@
-<!-- product-prototype.html – Prototype tools & early products for the venture (refactored and expanded) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Product Prototype – Civic Engagement Experiment</title>
+  <title>Product Prototypes — The Reverie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-        content="Prototypes, mockups and early tools emerging from the Civic Lab: blueprint builders, decision‑making games, and the ALTIUS console." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta
+    name="description"
+    content="Prototype tools and early products emerging from The Reverie Venture track: governance blueprint builder, decision-making games, and ALTIUS integrations."
+  />
+
+  <!-- Shared theme -->
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <!-- Shared behavior -->
+  <script src="../../assets/js/site.js" defer></script>
+
+  <style>
+    .page-hero { padding: 48px 0 18px; }
+    .crumbs { margin-top: 10px; color: rgba(238,240,255,0.75); font-size: 0.95rem; }
+    .crumbs a { color: rgba(255,221,107,0.95); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px) { .hub-grid { grid-template-columns: 1fr; } }
+
+    .stack { display: grid; gap: 12px; }
+    .subtle { color: rgba(238,240,255,0.78); }
+    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+      color: rgba(238,240,255,0.88);
+      white-space: nowrap;
+    }
+    .pill strong { color: rgba(255,221,107,0.95); font-weight: 700; }
+
+    .callout {
+      border-radius: 14px;
+      border: 1px solid rgba(245,197,66,0.22);
+      background: rgba(245,197,66,0.08);
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .list a {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: rgba(238,240,255,0.88);
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+    }
+    .list a:hover {
+      border-color: rgba(245,197,66,0.55);
+      background: rgba(245,197,66,0.10);
+      color: rgba(255,221,107,0.98);
+    }
+    .tag {
+      font-size: 0.78rem;
+      color: rgba(238,240,255,0.70);
+      white-space: nowrap;
+      align-self: center;
+    }
+
+    .small { font-size: 0.92rem; }
+  </style>
 </head>
-<body class="venture-page">
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <h1>Civic Engagement</h1>
-        <p>Experiment &amp; Lab</p>
+
+<body class="theme-galaxy">
+  <!-- Shared header injected by site.js -->
+  <div data-include="header"></div>
+
+  <main id="top">
+    <section class="hero page-hero">
+      <div class="wrap">
+        <p class="kicker">Venture track · prototypes</p>
+        <h1>Product Prototypes</h1>
+        <p class="lead">
+          The Reverie isn’t just a think-piece — it’s a workshop. These are messy, opinionated prototypes
+          designed to reveal what works (and what breaks) when real people try to govern, meet, decide,
+          and follow through.
+        </p>
+
+        <p class="crumbs">
+          <a href="../../index.html">Home</a> / <a href="venture-overview.html">Venture</a> / Product Prototypes
+        </p>
+
+        <div class="actions-row">
+          <a class="btn" href="venture-overview.html">Venture overview</a>
+          <a class="btn primary" href="product-prototype.html">Product prototypes</a>
+          <a class="btn" href="market-research.html">Market &amp; research</a>
+          <a class="btn" href="../lab/">Civic Lab</a>
+          <a class="btn" href="../altius/">ALTIUS</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill"><strong>Bias:</strong> usable</span>
+          <span class="pill"><strong>Rule:</strong> no bloat</span>
+          <span class="pill"><strong>Goal:</strong> ship drafts</span>
+          <span class="pill"><strong>Metric:</strong> follow-through</span>
+        </div>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="journal-memo.html">Journal Memo</a>
-        <a href="dissertation.html">Dissertation</a>
-        <a href="civicengagementproject.html">Civic Engagement Project</a>
-        <a href="study-details.html">Study Details</a>
-        <a href="questionnaires.html">Questionnaires</a>
-        <a href="civic-lab.html">Civic Lab</a>
-        <a href="venture-overview.html">Venture Overview</a>
-        <a href="product-prototype.html" class="active">Product Prototype</a>
-        <a href="market-research.html">Market &amp; Research</a>
-        <a href="team-contact.html">Team &amp; Contact</a>
-        <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank">MSL Site</a>
-      </nav>
-    </aside>
-    <main class="content">
-      <section>
-        <h2>Prototypes &amp; Tools in Development</h2>
-        <p>
-          The Civic Lab isn’t just a think‑piece; it’s a workshop. Here you’ll find the drafts,
-          mockups and early products that bridge theory to practice. These are deliberately
-          messy, opinionated prototypes designed to provoke feedback and reveal what works (and
-          what doesn’t) when real people try to use them. None of these are finished; all of them
-          are invitations.
-        </p>
-      </section>
+    </section>
 
-      <section>
-        <h3>Blueprint Builder: Constitutions Without Snoozing</h3>
-        <p>
-          Most student governments and clubs start with a constitution that nobody reads and a set
-          of bylaws that nobody understands. The Blueprint Builder is a wizard‑style tool that
-          walks you through structure, powers and procedures while forcing you to make choices
-          instead of copying boilerplate. It asks awkward questions (“Who can actually call a
-          meeting? Why is this threshold ⅔?”) and produces a clear, student‑friendly document at
-          the end.
-        </p>
-        <ul>
-          <li>Interactive prompts that translate legalese into plain language.</li>
-          <li>Real‑time warnings when you create contradictions or concentration of power.</li>
-          <li>Export to PDF/Markdown so you can share, edit and adopt it formally.</li>
-        </ul>
-      </section>
+    <section class="section">
+      <div class="wrap hub-grid">
+        <!-- Left: main content -->
+        <div class="stack">
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">What’s here</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              These tools bridge theory to practice. None are “finished.” Each is a test:
+              can we reduce civic friction without turning governance into yet another app-shaped illusion?
+            </p>
 
-      <section>
-        <h3>Decision‑Making Games &amp; Apps</h3>
-        <p>
-          The analog games on the <a href="civic-lab.html">Civic Lab</a> page are fun, but there’s
-          only so much you can do with sticky notes. We’re building lightweight digital tools that
-          bring Agenda Jenga, Budget Lab and Parli Pro Speedrun to phones and laptops. They’re not
-          meant to replace the real experience; they’re there for when you can’t get everyone in
-          the same room or want to run a quick practice round.
-        </p>
-        <ul>
-          <li>Drag‑and‑drop agenda setting with timers and auto‑generated debrief questions.</li>
-          <li>Budget sliders that visualize trade‑offs and coalition scores in real time.</li>
-          <li>A mini parliamentary motion trainer that rewards proper use of procedure like a
-              rhythm game.</li>
-        </ul>
-      </section>
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Design constraint:</strong> If it can’t help someone inside a meeting, it should probably
+                be a checklist, not a product.
+              </p>
+            </div>
+          </article>
 
-      <section>
-        <h3>ALTIUS Console Integration</h3>
-        <p>
-          <a href="altius.html">ALTIUS</a> is already live as a public prototype. We’re exploring
-          how to embed its catalytic approach into other tools: imagine a meeting planner that
-          gently nags you to schedule your first draft agenda or a bylaws builder that throws a
-          mild fit when you avoid deciding how to remove officers. The goal is not to let AI run
-          your organization; it’s to remove the friction that stops you from doing the obvious
-          next step.
-        </p>
-      </section>
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Blueprint Builder</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              Constitutions that nobody reads and bylaws nobody understands are the default failure mode.
+              The Blueprint Builder is a wizard-style tool that forces choices instead of letting people paste boilerplate.
+            </p>
 
-      <section>
-        <h3>On the Horizon</h3>
-        <p>
-          These ideas are simmering on the back burner. They may turn into full products, or they
-          may die quietly after testing. Either way, we’re transparent about what we’re thinking:
-        </p>
-        <ul>
-          <li>A micro‑survey engine that lets you poll your members anonymously and visualize
-              sentiment without relying on third‑party platforms.</li>
-          <li>A “civic mission tracker” that links your club’s activities to the broader research
-              questions in this experiment, giving you credit (and data) for what you do.</li>
-          <li>Open‑source adapters so educators can plug these tools into existing LMS systems.
-          </li>
-        </ul>
-        <p class="small">
-          Curious? Skeptical? Want to test something before it breaks? Reach out via the
-          <a href="team-contact.html">Team &amp; Contact</a> page or send an email to
-          consult@nathansanchez.org.
-        </p>
-      </section>
-    </main>
-  </div>
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li>Interactive prompts that translate legalese into plain language.</li>
+              <li>Warnings when you create contradictions or concentrate power.</li>
+              <li>Export to clean formats (PDF/Markdown) for real adoption and revision.</li>
+            </ul>
+
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Awkward questions it should ask:</strong>
+                “Who can actually call a meeting?” “How do you remove an officer?” “Why is this threshold ⅔?”
+              </p>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Decision-making games &amp; apps</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The analog games on the Civic Lab page are a start. But sticky notes only scale so far.
+              These are lightweight digital tools for practice rounds when you can’t get everyone in the same room.
+            </p>
+
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li><strong>Agenda Jenga:</strong> drag-and-drop agenda setting + timers + auto debrief.</li>
+              <li><strong>Budget Lab:</strong> sliders that visualize trade-offs and coalition pressure.</li>
+              <li><strong>Parli Pro Speedrun:</strong> a motion trainer that rewards correct procedure like a rhythm game.</li>
+            </ul>
+
+            <p class="small subtle" style="margin-top: 10px;">
+              None of these replace real deliberation. They train the muscle memory so deliberation doesn’t collapse
+              into chaos when stakes show up.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">ALTIUS console integration</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              ALTIUS is already live as a public prototype. The venture question is whether its “catalyst” logic
+              can be embedded without letting AI quietly take the wheel.
+            </p>
+
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li>A meeting planner that nudges you into drafting the agenda before panic starts.</li>
+              <li>A bylaws builder that refuses to proceed until you decide removal/oversight rules.</li>
+              <li>A follow-through layer that turns “we should” into assignments + deadlines + accountability.</li>
+            </ul>
+
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Principle:</strong> don’t let AI run your org. Let it remove the friction that stops you from doing the obvious next step.
+              </p>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">On the horizon</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              These might become products, or they might die quietly after testing. Either outcome is acceptable.
+              We’re explicit about what’s cooking.
+            </p>
+
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li>A micro-survey engine: anonymous member input + clean visuals without enterprise platform overhead.</li>
+              <li>A civic mission tracker: link club activity to research questions (credit + data + story).</li>
+              <li>Open-source adapters: plug tools into LMS systems without turning schools into IT projects.</li>
+            </ul>
+
+            <p class="small subtle" style="margin-top: 10px;">
+              Contact routing will be reintroduced later (you deleted Team &amp; Contact), so this page intentionally avoids dead links.
+            </p>
+          </article>
+        </div>
+
+        <!-- Right: sidebar -->
+        <aside class="card" style="padding: 18px;">
+          <h2 style="margin:0;">Quick links</h2>
+          <p class="subtle" style="margin-top: 8px;">
+            Venture pages should be navigable without hunting.
+          </p>
+
+          <div class="list" style="margin-top: 12px;">
+            <a href="venture-overview.html">
+              <span><strong>Venture overview</strong><br><span class="subtle">Mission + concept (WIP)</span></span>
+              <span class="tag">Venture</span>
+            </a>
+            <a href="market-research.html">
+              <span><strong>Market &amp; research</strong><br><span class="subtle">Segments, friction, competitors</span></span>
+              <span class="tag">Research</span>
+            </a>
+            <a href="product-prototype.html">
+              <span><strong>Product prototypes</strong><br><span class="subtle">Tools, tests, integrations</span></span>
+              <span class="tag">Proto</span>
+            </a>
+            <a href="../lab/">
+              <span><strong>Civic Lab</strong><br><span class="subtle">Services + collaborations</span></span>
+              <span class="tag">Lab</span>
+            </a>
+            <a href="../altius/">
+              <span><strong>ALTIUS</strong><br><span class="subtle">Agency-first task engine</span></span>
+              <span class="tag">Agent</span>
+            </a>
+          </div>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../../index.html">Back home</a>
+            <a class="btn small" href="#top">Top</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer injected by site.js -->
+  <div data-include="footer"></div>
 </body>
 </html>

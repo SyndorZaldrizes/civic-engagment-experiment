@@ -1,147 +1,297 @@
-<!-- market-research.html – Market analysis & research for the venture (refactored and expanded) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Market &amp; Research – Civic Engagement Experiment</title>
+  <title>Market Research — The Reverie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-        content="Early market analysis, user research and competitive landscape informing the Civic Lab's potential venture." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta
+    name="description"
+    content="Market analysis, user research, and competitive landscape for The Reverie Venture track—what people actually need, what exists, and where we fit."
+  />
+
+  <!-- Shared theme -->
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+  <!-- Shared behavior -->
+  <script src="../../assets/js/site.js" defer></script>
+
+  <style>
+    .page-hero { padding: 48px 0 18px; }
+    .crumbs { margin-top: 10px; color: rgba(238,240,255,0.75); font-size: 0.95rem; }
+    .crumbs a { color: rgba(255,221,107,0.95); text-decoration: none; }
+    .crumbs a:hover { text-decoration: underline; }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 14px;
+    }
+    @media (max-width: 980px) { .hub-grid { grid-template-columns: 1fr; } }
+
+    .subtle { color: rgba(238,240,255,0.78); }
+    .stack { display: grid; gap: 12px; }
+    .actions-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      border: 1px solid rgba(160,164,184,0.22);
+      background: rgba(255,255,255,0.03);
+      color: rgba(238,240,255,0.88);
+      white-space: nowrap;
+    }
+    .pill strong { color: rgba(255,221,107,0.95); font-weight: 700; }
+
+    .callout {
+      border-radius: 14px;
+      border: 1px solid rgba(245,197,66,0.22);
+      background: rgba(245,197,66,0.08);
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+
+    .danger-note {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 77, 77, 0.25);
+      background: rgba(255, 77, 77, 0.06);
+      padding: 12px 14px;
+      margin-top: 12px;
+    }
+
+    /* Lightweight table polish (without relying on unknown global table styles) */
+    .table-wrap { overflow-x: auto; border-radius: 14px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(160,164,184,0.22);
+      border-radius: 14px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(160,164,184,0.18);
+      vertical-align: top;
+      color: rgba(238,240,255,0.86);
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    th {
+      color: rgba(255,221,107,0.95);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      background: rgba(245,197,66,0.06);
+    }
+    tr:last-child td { border-bottom: none; }
+    .small { font-size: 0.92rem; }
+  </style>
 </head>
-<body class="venture-page">
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="brand">
-        <h1>Civic Engagement</h1>
-        <p>Experiment &amp; Lab</p>
+
+<body class="theme-galaxy">
+  <!-- Shared header injected by site.js -->
+  <div data-include="header"></div>
+
+  <main id="top">
+    <section class="hero page-hero">
+      <div class="wrap">
+        <p class="kicker">Venture track · research</p>
+        <h1>Market &amp; Research</h1>
+        <p class="lead">
+          Before we build “solutions,” we check whether anyone actually needs them—and why they aren’t already satisfied.
+          This page is the anti-delusion layer: user segments, friction patterns, and the competitor map.
+        </p>
+
+        <p class="crumbs">
+          <a href="../../index.html">Home</a> / <a href="venture-overview.html">Venture</a> / Market &amp; Research
+        </p>
+
+        <div class="actions-row">
+          <a class="btn" href="venture-overview.html">Venture overview</a>
+          <a class="btn primary" href="market-research.html">Market &amp; research</a>
+          <a class="btn" href="product-prototype.html">Product prototype</a>
+          <a class="btn" href="../research/">Research hub</a>
+        </div>
+
+        <div class="pill-row">
+          <span class="pill"><strong>Bias:</strong> reality</span>
+          <span class="pill"><strong>Goal:</strong> usable in minutes</span>
+          <span class="pill"><strong>Constraint:</strong> low-budget orgs</span>
+          <span class="pill"><strong>Rule:</strong> no civic cringe</span>
+        </div>
       </div>
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="journal-memo.html">Journal Memo</a>
-        <a href="dissertation.html">Dissertation</a>
-        <a href="civicengagementproject.html">Civic Engagement Project</a>
-        <a href="study-details.html">Study Details</a>
-        <a href="questionnaires.html">Questionnaires</a>
-        <a href="civic-lab.html">Civic Lab</a>
-        <a href="venture-overview.html">Venture Overview</a>
-        <a href="product-prototype.html">Product Prototype</a>
-        <a href="market-research.html" class="active">Market &amp; Research</a>
-        <a href="team-contact.html">Team &amp; Contact</a>
-        <a href="https://syndorzaldrizes.github.io/Syndor/" target="_blank">MSL Site</a>
-      </nav>
-    </aside>
-    <main class="content">
-      <section>
-        <h2>Market &amp; Research Insights</h2>
-        <p>
-          Before you can build something useful, you have to know who might actually use it and
-          why they aren’t already satisfied. This page summarizes the early market research and
-          user interviews guiding the Civic Lab’s venture track. It’s less about spreadsheets and
-          more about patterns: where the demand is, where the gaps are, and which delusions we had
-          to abandon after talking to actual humans.
-        </p>
-      </section>
+    </section>
 
-      <section>
-        <h3>Potential User Segments</h3>
-        <p>
-          Our initial hypothesis was “everyone who cares about democracy will want this.” Reality
-          is more specific. These are the groups who responded with curiosity rather than glazed
-          eyes:
-        </p>
-        <ul>
-          <li><strong>Student governments &amp; delegations:</strong> Need clear procedures and ways to
-              train new members quickly.</li>
-          <li><strong>Campus clubs &amp; societies:</strong> Want to avoid the “tyranny of the few” and
-              spread decision‑making beyond officers.</li>
-          <li><strong>Educators &amp; staff:</strong> Looking for pre‑built activities that fit into a
-              30‑minute class block without derailing the syllabus.</li>
-          <li><strong>Youth programs &amp; after‑school groups:</strong> Crave engaging content that
-              doesn’t feel like recycled civics homework.</li>
-          <li><strong>Small nonprofits &amp; civic orgs:</strong> Need lightweight tools to run
-              deliberative meetings and capture member input without paying enterprise prices.</li>
-        </ul>
-      </section>
+    <section class="section">
+      <div class="wrap hub-grid">
+        <!-- Left: main content -->
+        <div class="stack">
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Market insights (early)</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              This is less about spreadsheets and more about patterns: where demand is real, where it’s fake,
+              where the gaps are, and which delusions die the moment you talk to actual humans.
+            </p>
 
-      <section>
-        <h3>What We Learned So Far</h3>
-        <p>
-          Talking to people (rather than talking to ourselves) produced a few recurring themes:
-        </p>
-        <ul>
-          <li><em>People are time‑poor.</em> Anything that takes longer than a meeting gets pushed
-              aside; prototypes must work in minutes, not hours.</li>
-          <li><em>Nobody reads PDFs.</em> Even earnest leaders admitted they rarely read their own
-              constitutions; interactive guides beat static documents.</li>
-          <li><em>Training is a bottleneck.</em> Clubs reinvent the wheel each year because there’s
-              no institutional memory; onboarding tools are valued more than high‑concept theory.</li>
-          <li><em>“AI” is a buzzword.</em> Users are intrigued by AI helpers but are wary of
-              outsourcing decisions; they want transparency and control.</li>
-          <li><em>Cost sensitivity is real.</em> Student orgs and small nonprofits operate on
-              shoestring budgets; freemium models or institutional sponsorships are essential.</li>
-        </ul>
-      </section>
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Core thesis:</strong> Most civic work fails because it assumes people have time, patience, and context.
+                They don’t. So the product has to work under scarcity: attention scarcity, time scarcity, motivation scarcity.
+              </p>
+            </div>
+          </article>
 
-      <section>
-        <h3>Competitor Landscape</h3>
-        <p>
-          The space is a strange mix of polished civic tech platforms and home‑grown Google Docs.
-          Our goal isn’t to clone what already exists, but to slot into the gaps. Here’s a rough
-          map:
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Examples</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Civic education games</td>
-              <td>iCivics, Classroom Democracy kits</td>
-              <td>Great for K–12; less helpful for real campus politics</td>
-            </tr>
-            <tr>
-              <td>Governance platforms</td>
-              <td>Decidim, Loomio</td>
-              <td>Robust but heavy; often require IT support and budgets</td>
-            </tr>
-            <tr>
-              <td>Parliamentary procedure guides</td>
-              <td>Robert’s Rules cheat sheets</td>
-              <td>Useful reference, but no interactive practice</td>
-            </tr>
-            <tr>
-              <td>AI productivity tools</td>
-              <td>ChatGPT, Notion AI</td>
-              <td>General‑purpose; not tailored to civic contexts</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="small">
-          We respect these tools and occasionally borrow from them. The Civic Lab’s niche is
-          somewhere between “teach me how to govern” and “help me actually run this meeting.”
-        </p>
-      </section>
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Potential user segments</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The initial hypothesis was “everyone who cares about democracy will want this.”
+              Reality: the interested groups are specific—and they’re allergic to bloat.
+            </p>
 
-      <section>
-        <h3>Research Roadmap</h3>
-        <p>
-          The research is ongoing. Upcoming steps include deeper dives into non‑college youth
-          programs, pilot deployments on campuses, and partnerships with civic tech providers who
-          don’t mind a little experimentation. If you have data, anecdotes or cynical hot takes to
-          share, we’d love to hear them.
-        </p>
-        <p class="small">
-          As always, reach out via the <a href="team-contact.html">Team &amp; Contact</a> page or
-          email consult@nathansanchez.org if you’d like to collaborate or simply tell us we’re
-          wrong.
-        </p>
-      </section>
-    </main>
-  </div>
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li><strong>Student governments &amp; delegations:</strong> need clear procedures + fast onboarding.</li>
+              <li><strong>Campus clubs &amp; societies:</strong> want to avoid the “tyranny of the few” and spread decision-making.</li>
+              <li><strong>Educators &amp; staff:</strong> want plug-in activities that fit a 30-minute block.</li>
+              <li><strong>Youth programs &amp; after-school groups:</strong> want engaging civics that doesn’t feel like homework.</li>
+              <li><strong>Small nonprofits &amp; civic orgs:</strong> need lightweight tools without enterprise pricing or IT overhead.</li>
+            </ul>
+
+            <div class="danger-note">
+              <p class="small" style="margin:0;">
+                <strong>Reality check:</strong> if the offering requires “read this 30-page PDF first,” it’s dead on arrival.
+              </p>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">What we learned (so far)</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              Talking to people produced the same themes over and over. The themes are annoying—because they’re true.
+            </p>
+
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li><em>People are time-poor.</em> If it can’t work inside a meeting, it doesn’t exist.</li>
+              <li><em>Nobody reads PDFs.</em> Interactive guides beat static documents, every time.</li>
+              <li><em>Training is the bottleneck.</em> Clubs reinvent the wheel annually because memory is fragile.</li>
+              <li><em>“AI” is a buzzword.</em> People want help, not replacement; transparency and control matter.</li>
+              <li><em>Cost sensitivity is real.</em> Student orgs and small nonprofits run on fumes.</li>
+            </ul>
+
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Implication:</strong> the real product might be <em>onboarding + meeting execution + structured follow-through</em>,
+                not “a civic platform™”.
+              </p>
+            </div>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Competitor landscape (rough map)</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The space is a weird mix of polished civic tech platforms and improvised Google Docs.
+              We’re not cloning what exists—we’re aiming at the gaps between categories.
+            </p>
+
+            <div class="table-wrap" style="margin-top: 12px;">
+              <table aria-label="Competitor landscape table">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Examples</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Civic education games</td>
+                    <td>iCivics, classroom democracy kits</td>
+                    <td>Great for K–12; less useful for real campus governance or meeting execution.</td>
+                  </tr>
+                  <tr>
+                    <td>Governance platforms</td>
+                    <td>Decidim, Loomio</td>
+                    <td>Robust but heavy; often require IT support, budgets, and organizational maturity.</td>
+                  </tr>
+                  <tr>
+                    <td>Parliamentary procedure guides</td>
+                    <td>Robert’s Rules cheat sheets</td>
+                    <td>Useful reference, but no interactive practice or “in-meeting” tooling.</td>
+                  </tr>
+                  <tr>
+                    <td>AI productivity tools</td>
+                    <td>ChatGPT, Notion AI</td>
+                    <td>General-purpose; not civic-context aware; encourages dependence if unmanaged.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="small subtle" style="margin-top: 10px;">
+              Our niche is somewhere between: <strong>“teach me how to govern”</strong> and
+              <strong>“help me run this meeting and capture decisions cleanly”</strong>.
+            </p>
+          </article>
+
+          <article class="card" style="padding: 18px;">
+            <h2 style="margin:0;">Research roadmap</h2>
+            <p class="subtle" style="margin-top: 8px;">
+              The research is ongoing: deeper dives into non-college youth programs, pilot deployments on campuses,
+              and partnerships with civic tech providers who don’t mind a little experimentation.
+            </p>
+
+            <ul class="subtle" style="margin:10px 0 0; padding-left: 18px;">
+              <li><strong>User discovery:</strong> 10–20 short interviews across each segment.</li>
+              <li><strong>Pilot deployments:</strong> one campus org + one classroom + one staff office.</li>
+              <li><strong>Measure outcomes:</strong> onboarding speed, retention, meeting quality, follow-through rate.</li>
+              <li><strong>Publish notes:</strong> what worked, what didn’t, what changed.</li>
+            </ul>
+
+            <div class="callout">
+              <p class="small" style="margin:0;">
+                <strong>Collaboration:</strong> If you have data, anecdotes, or cynical hot takes, the lab always wants them.
+                (We deleted Team &amp; Contact, so routing will live elsewhere later—no dead links here.)
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Right: sidebar -->
+        <aside class="card" style="padding: 18px;">
+          <h2 style="margin:0;">How this connects</h2>
+          <p class="subtle" style="margin-top: 8px;">
+            Market research keeps the Venture honest. Research keeps it defensible. The Lab keeps it real.
+          </p>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../research/">Research hub</a>
+            <a class="btn small" href="../lab/">Civic Lab</a>
+            <a class="btn small" href="../altius/">ALTIUS</a>
+            <a class="btn small" href="venture-overview.html">Venture overview</a>
+          </div>
+
+          <div class="card" style="margin-top: 12px; padding: 14px;">
+            <p class="subtle" style="margin:0;">
+              <strong>Version rule:</strong> each page is a module. Refactor one at a time. Don’t break the spine.
+            </p>
+          </div>
+
+          <div class="actions-row" style="margin-top: 12px;">
+            <a class="btn small" href="../../index.html">Back home</a>
+            <a class="btn small" href="#top">Top</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared footer injected by site.js -->
+  <div data-include="footer"></div>
 </body>
 </html>
